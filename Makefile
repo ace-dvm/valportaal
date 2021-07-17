@@ -32,11 +32,16 @@ dbsetup: npmsetup
 	bin/setup-new-db-container.sh
 	bin/db-create-tables.sh
 
-check: dbsetup
+valportaal-static/ejs.3-1-6.js:
+	wget https://github.com/mde/ejs/releases/download/v3.1.6/ejs.js
+	mv -iv ejs.js $@
+
+check: dbsetup valportaal-static/ejs.3-1-6.js
 	./valportaal-acceptance-test.sh
 	@echo "SUCCESS $@"
 
 tidy:
 	js-beautify --replace --end-with-newline \
 		valportaal-acceptance-test.js \
-		ValPortaal.js
+		ValPortaalServer.js \
+		valportaal.js

@@ -23,20 +23,33 @@ async function renderIndex(req, res) {
     res.render("index"); //.ejs
 }
 
+let vp = require('./valportaal').valportaal_init();
+
+async function getAdviceJSON(req, res) {
+    let patient_id = req.query.id || 0;
+    let patient_advice = await vp.getAdviceForPatient(patient_id);
+    res.json({
+        patient_id: patient_id,
+        patient_advice: patient_advice
+    });
+}
+
 process.on('exit', function() {
     console.log('server is not listening on ' + PORT);
 });
 
 let app = express();
-app.set('views', ['./valportaal-express-views',]);
+app.set('views', ['./valportaal-express-views', ]);
 const server = http.createServer(app);
 
-app.use("/static", express.static('static'));
+app.use("/static", express.static('valportaal-static'));
 app.set('view engine', 'ejs');
 
 app.get("/", renderIndex);
 app.get("/index", renderIndex);
 app.get("/index.html", renderIndex);
+
+app.get("/advice", getAdviceJSON);
 
 server.listen(PORT, () => {
     console.log(`server is listening on ${PORT}`);

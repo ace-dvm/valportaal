@@ -3,7 +3,7 @@
 # Copyright (C) 2021 S. K. Medlock, E. K. Herman, K. M. Shaw
 PORT=9090
 BASE_URL="http://127.0.0.1:$PORT"
-node ValPortaal.js $PORT &
+node ValPortaalServer.js $PORT &
 CHILD_PID=%1
 sleep 1
 
