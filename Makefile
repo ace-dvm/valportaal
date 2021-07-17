@@ -28,7 +28,13 @@ update:
 npmsetup: node_modules/ws/lib/websocket-server.js
 	@echo "$@ complete"
 
-dbsetup: npmsetup
+db-scripts.env: docker.db-scripts.env
+	ln -sv $< $@
+
+dbconfig.env: docker-dbconfig.env
+	ln -sv $< $@
+
+dbsetup: npmsetup dbconfig.env db-scripts.env
 	bin/setup-new-db-container.sh
 	bin/db-create-tables.sh
 
