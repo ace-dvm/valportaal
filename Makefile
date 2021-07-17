@@ -28,8 +28,11 @@ update:
 npmsetup: node_modules/ws/lib/websocket-server.js
 	@echo "$@ complete"
 
+dbsetup: npmsetup
+	bin/setup-new-db-container.sh
+	bin/db-create-tables.sh
 
-check: npmsetup
+check: dbsetup
 	./valportaal-acceptance-test.sh
 	@echo "SUCCESS $@"
 
