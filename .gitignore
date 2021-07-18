@@ -4,7 +4,7 @@ valportaal.my.cnf
 dbconfig.env
 db-scripts.env
 valportaal-static/ejs.3-1-6.js
-
+coverage/*
 
 node_modules
 package-lock.json

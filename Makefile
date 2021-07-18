@@ -43,6 +43,7 @@ valportaal-static/ejs.3-1-6.js:
 	mv -iv ejs.js $@
 
 check: dbsetup valportaal-static/ejs.3-1-6.js
+	npm test
 	./valportaal-acceptance-test.sh
 	@echo "SUCCESS $@"
 
