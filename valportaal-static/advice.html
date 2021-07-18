@@ -1,25 +1,15 @@
 <!DOCTYPE html>
 <!-- SPDX-License-Identifier: GPL-3.0-or-later -->
 <!-- Copyright (C) 2021 S. K. Medlock, E. K. Herman, K. M. Shaw -->
+<html lang="nl">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hoe gebruik ik dit systeem?</title>
-<script src="ejs.3-1-6.js">
-</script>
+<script src="ejs.3-1-6.js"></script>
+<script src="advice.js"></script>
 </head>
 <body>
 <div id="main-content">loading ...</div>
-<script>
-let params = new URLSearchParams(window.location.search)
-let id = params.get('id');
-let template = '<%= JSON.stringify(patient_json) %>';
-fetch(`../advice?id=${id}`).then(async res => {
-    let patient_json = await res.json();
-    html = ejs.render(template, { patient_json: patient_json });
-    document.getElementById("main-content").innerHTML = html;
-    if (window.readyForTesting !== undefined) {
-        window.readyForTesting();
-    }
-}).catch(err => { console.log(err) } );
-</script>
 </body>
 </html>
