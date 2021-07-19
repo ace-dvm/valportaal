@@ -5,11 +5,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hoe gebruik ik dit systeem?</title>
+<title>Valportaal persoonlijk advies</title>
 <script src="ejs.3-1-6.js"></script>
 <script src="advice.js"></script>
+<link rel="stylesheet" type="text/css" href="advice.css">
 </head>
 <body>
-<div id="main-content">loading ...</div>
+<div id="nav" class="nav"></div><!-- end div nav -->
+<div id="advice_header" class="page_header">Mijn valrisico en advies</div>
+<div id="advice_subheader" class="section_header">De besproken punten met uw dokter</div>
+<p>U had onlangs een afspraak bij de Valkliniek.</p>
+<p>U heeft toen samen met de dokter uw <strong>valrisico</strong> besproken.</p>
+<p>Ook heeft u samen met de dokter een plan met <strong>adviezen</strong> opgesteld.</p>
+<p><strong>U vindt op deze pagina de volgende informatie:</strong></p>
+<ul>
+<li><a href="#patient_med_advice_header">Uw persoonlik valrisico advies</a></li>
+<li><a href="#header_risk">Uw valrisico</a></li>
+<li><a href="#header_steps">Hoe verlaagt u uw valrisico?</a></li>
+<li><a href="#header_medlist">Uw medicijnoverzicht</a></li>
+</ul>
+<div id="patient_med_advice_header" class="section_header">Advies over medicaties:</div>
+<div id="med_advice" class="med_advice"></div><!-- end div med_advice -->
+<div id="div_other_med_advice" class="div_other_advice"></div><!-- end div other_med_advice -->
+<div id="header_overige_advies" class="section_header">Overige adviezen</div>
+<div id="nonmed_advice" class="nonmed_advice"></div><!-- end div nonmed_advice -->
+<div id="header_risk" class="section_header">Uw valrisico</div>
+<div id="risk" class="prediction"></div><!-- end div risk -->
+<div id="header_steps" class="section_header">Hoe verlaagt u uw valrisico?</div>
+<!-- this is static content -->
+<div id="header_medlist" class="section_header">Uw medicijnoverzicht</div>
+<div id="medlist" class="medlist"></div><!-- end div medlist -->
+<!-- This is just here for debugging --><div id="main-content">loading ...</div>
 </body>
 </html>
