@@ -22,10 +22,15 @@ node_modules/ws/lib/websocket-server.js:
 	npm install
 	@echo "$@ complete"
 
+node_modules/jest-fetch-mock/package.json:
+	npm install
+	@echo "$@ complete"
+
 update:
 	npm update
 
-npmsetup: node_modules/ws/lib/websocket-server.js
+npmsetup: node_modules/ws/lib/websocket-server.js \
+		node_modules/jest-fetch-mock/package.json
 	@echo "$@ complete"
 
 db-scripts.env: docker.db-scripts.env
