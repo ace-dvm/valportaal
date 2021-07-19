@@ -56,4 +56,5 @@ tidy:
 	js-beautify --replace --end-with-newline \
 		valportaal-acceptance-test.js \
 		ValPortaalServer.js \
-		valportaal.js
+		valportaal.js \
+		valportaal-static/advice.js
