@@ -3,6 +3,7 @@ body {
 	padding: 0;
 	height: 100%;
 	width: 100%;
+	font-family: 'Trebuchet MS', Arial;
 }
 
 .nav {
@@ -15,13 +16,19 @@ body {
 
 }
 
+.nav a {
+	color: rgba(0, 55, 65, 1);
+	text-decoration: none;
+	
+}
+
 .nav-logo {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 }
 .nav-logo-box {
-	background: url("assets/image1.png") center no-repeat;
+	background: url("assets/umc-logo.png") center no-repeat;
 	background-size: 543px 91px;
 	width: 500px;
         height:	91px;
@@ -64,6 +71,13 @@ body {
 	margin-top: 20px;
 }
 
+.text-red {
+	color: red;
+}
+
+a {
+	color: blue;
+}
 a.withdot {
 	background: transparent url("assets/dot.png") center left no-repeat;
 	background-size: 20px 20px;
@@ -87,8 +101,25 @@ h4 {
 	text-decoration: bold;
 }
 
+.sideeffects {
+	display: flex;
+	padding: 30px;
+
+}
+
+.sideeffects-list {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+
 .footer {
 	font-size: 28.00px;
+
+	margin: auto;
+	width: 95%;
+
 	display: flex;
 	justify-content: center;
 	padding: 30px;
