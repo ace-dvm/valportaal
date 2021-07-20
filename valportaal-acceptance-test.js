@@ -82,4 +82,7 @@ test('Check advice page', async t => {
 
     // initial check that patient data is rendered
     await t.expect(selector.withText('methocarbamol').exists).ok();
+	
+	let med_advice = Selector('#med_advice');
+	await t.expect(med_advice.withText('Stoppen').exists).ok();
 });

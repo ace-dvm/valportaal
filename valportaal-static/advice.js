@@ -5,8 +5,11 @@ let template = '<%= JSON.stringify(patient_json) %>';
 window.addEventListener('load', () => {
     fetch(`../advice?id=${id}`).then(async res => {
         let patient_json = await res.json();
-        // let med_advice = createMedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
-        // document.getElementById("med_advice").innerHTML = med_advice;
+		let med_advice = "Geen";
+		if(patient_json["patient_advice"] != undefined && Object.keys(patient_json["patient_advice"]).length > 0){
+			med_advice = createMedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
+		}
+        document.getElementById("med_advice").innerHTML = med_advice;
         html = ejs.render(template, {
             patient_json: patient_json
         });
@@ -19,22 +22,26 @@ window.addEventListener('load', () => {
     });
 });
 
+//TODO this function is tested in the testcafe test, but should probably have a unit test too. advice.test.js doesn't exist yet.
 function createMedAdviceHTML(json_advice) {
     let med_advice = "";
-    /*    for (let i = 0; i < json_advice.length; ++i ) {
+        for (let i = 0; i < json_advice.length; ++i ) {
             if(json_advice[i]["ATC_code"].match(/[A-Z][0-9].+/)){
+				let advice_text = formatAdvice(json_advice[i]["advice"], json_advice[i]["freetext"]);
                 med_advice += "<div id=\"div_med_name_" + json_advice[i]["ATC_code"]
                     +"\" class = \"med_name\">"
                     +json_advice[i]["medcat_name"]
                     +"</div>\n<div class=\"med_advice\">"
-                    +json_advice[i]["advice"] // TODO parse the markdown
+                    +advice_text
                     +"\n</div>\n"
             }
         }
-    */
     if (med_advice == "") {
         med_advice = "Geen"
     }
-
     return med_advice;
+}
+
+function formatAdvice(advice_text, freetext){
+	return advice_text;
 }
