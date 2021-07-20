@@ -87,9 +87,11 @@ test('Check advice page', async t => {
     let selector = Selector('body');
 
     // initial check that patient data is rendered
-    await t.expect(selector.withText('methocarbamol').exists).ok();
+    await t.expect(selector.withText('Methocarbamol').exists).ok();
 	
 	let med_advice = Selector('#med_advice');
 	await t.expect(med_advice.withText('Stoppen').exists).ok();
 	await t.expect(med_advice.withText('My comment').exists).ok();
+	// TODO not sure that this test does that I want. I want to confirm that Methocarbamol does not appear 2x.
+	await t.expect(med_advice.withText(/(Methocarbamol.*){2}/).exists).notOk();
 });

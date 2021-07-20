@@ -26,15 +26,25 @@ window.addEventListener('load', () => {
 //TODO this function is tested in the testcafe test, but should probably have a unit test too. advice.test.js doesn't exist yet.
 function createMedAdviceHTML(json_advice) {
     let med_advice = "";
+	let current_med_name = "";
+	let counter = 0;
         for (let i = 0; i < json_advice.length; ++i ) {
             if(json_advice[i]["ATC_code"].match(/[A-Z][0-9].+/)){
 				let advice_text = formatAdvice(json_advice[i]["advice"], json_advice[i]["freetext"]);
-                med_advice += "<div id=\"div_med_name_" + json_advice[i]["ATC_code"]
+				advice_text = "<div  class=\"med_advice_text\"><ul>" +  advice_text + "</ul></div>";
+				advice_text = advice_text.replace("<p>", "<li>");
+				advice_text = advice_text.replace("</p>", "</li>");
+				let med_name = json_advice[i]["medcat_name"];
+				med_name = med_name.charAt(0).toUpperCase() + med_name.slice(1);
+				let med_name_div = "";
+				if(med_name !== current_med_name){
+					current_med_name = med_name;
+					med_name_div = "<div id=\"div_med_name_" + json_advice[i]["ATC_code"]
                     +"\" class = \"med_name\">"
-                    +json_advice[i]["medcat_name"]
-                    +"</div>\n<div class=\"med_advice\">"
-                    +advice_text
-                    +"\n</div>\n"
+                    +med_name
+                    +"</div>\n";
+				}
+                med_advice += med_name_div + advice_text;
             }
         }
     if (med_advice == "") {
@@ -48,10 +58,7 @@ function formatAdvice(advice_text, freetext){
 		freetext = "";
 	}
 	let formatted_advice = md.makeHtml(advice_text);
-	formatted_advice = formatted_advice.replace("<p>", "");
-	formatted_advice = formatted_advice.replace("</p>", "<br><br>");
 	let regex = /(\{\{free text.*\}\})/;
 	formatted_advice = formatted_advice.replace(regex, freetext);
-	console.log(formatted_advice);
 	return formatted_advice;
 }
