@@ -35,6 +35,12 @@ let patient_export_data = [{
     "freetext": null
 }, {
     "patient_id": 168,
+    "medcat_name": "methocarbamol",
+    "ATC_code": "M03BA03",
+    "advice": "Overige opmerkingen: {{free text}}",
+    "freetext": "My comment"
+}, {
+    "patient_id": 168,
     "medcat_name": null,
     "ATC_code": "OTHER",
     "advice": null,
@@ -85,4 +91,5 @@ test('Check advice page', async t => {
 	
 	let med_advice = Selector('#med_advice');
 	await t.expect(med_advice.withText('Stoppen').exists).ok();
+	await t.expect(med_advice.withText('My comment').exists).ok();
 });

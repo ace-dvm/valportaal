@@ -1,6 +1,7 @@
 let params = new URLSearchParams(window.location.search)
 let id = params.get('id');
 let template = '<%= JSON.stringify(patient_json) %>';
+let md = new showdown.Converter();
 
 window.addEventListener('load', () => {
     fetch(`../advice?id=${id}`).then(async res => {
@@ -43,5 +44,14 @@ function createMedAdviceHTML(json_advice) {
 }
 
 function formatAdvice(advice_text, freetext){
-	return advice_text;
+	if(freetext == null){
+		freetext = "";
+	}
+	let formatted_advice = md.makeHtml(advice_text);
+	formatted_advice = formatted_advice.replace("<p>", "");
+	formatted_advice = formatted_advice.replace("</p>", "<br><br>");
+	let regex = /(\{\{free text.*\}\})/;
+	formatted_advice = formatted_advice.replace(regex, freetext);
+	console.log(formatted_advice);
+	return formatted_advice;
 }
