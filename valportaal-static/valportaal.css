@@ -1,0 +1,101 @@
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.nav {
+	background-color: rgba(206, 217, 229, 1);
+	height: 400px;
+	color: rgba(0, 55, 65, 1);
+	margin: auto;
+	width: 95%;
+	padding-top: 10px;
+
+}
+
+.nav-logo {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+.nav-logo-box {
+	background: url("assets/image1.png") center no-repeat;
+	background-size: 543px 91px;
+	width: 500px;
+        height:	91px;
+	background-color: rgba(255, 255, 255, 1);
+	border-color: rgba(112, 112, 112, 1);
+	border-style: none;
+	border-width: 1.00px;
+	border-radius: 71.00px;
+	z-index: 1;
+}
+.nav-title {
+	color: rgba(240, 120, 20, 1);
+	font-size: 27.00px;
+	font-style: italic;
+	padding-top: 10px;
+	z-index: 1;
+}
+
+.nav-button-box {
+	display: flex;
+	justify-content: space-around;
+	background-color: white;
+	height: 300px;
+	width: 95%;
+	position: absolute;
+	top: 60px;
+}
+
+.nav-button {
+	flex-basis: 10%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 100px;
+}
+
+.nav-icon-text {
+	font-size: 23px;
+	white-space: nowrap;
+	margin-top: 20px;
+}
+
+a.withdot {
+	background: transparent url("assets/dot.png") center left no-repeat;
+	background-size: 20px 20px;
+	padding-left: 30px;
+	color: blue;
+	text-decoration: underline;
+}
+
+.content {
+	font-size: 30px;
+	display:flex;
+	flex-direction: column;
+	margin-left: 100px;
+}
+
+h3 {
+	color: rgba(240, 120, 20, 1);
+	font-size: 46.00px;
+}
+h4 {
+	text-decoration: bold;
+}
+
+.footer {
+	font-size: 28.00px;
+	display: flex;
+	justify-content: center;
+	padding: 30px;
+	margin-top: 30px;
+	
+	border-top: 1px solid rgba(112, 112, 112, 1);
+
+	background-color: rgba(206, 217, 229, 1);
+}
+
