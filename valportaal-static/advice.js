@@ -10,10 +10,12 @@ window.addEventListener('load', () => {
 		let nonmed_advice = "Geen";
 		if(patient_json["patient_advice"] != undefined && Object.keys(patient_json["patient_advice"]).length > 0){
 			med_advice = createMedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
+			document.getElementById("med_advice").innerHTML = med_advice;
 			nonmed_advice = createNonmedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
+			document.getElementById("nonmed_advice").innerHTML = nonmed_advice;
+		} else {
+			document.getElementById("body_wrap").innerHTML = "Some nice HTML about the portal data not being released yet.";
 		}
-        document.getElementById("med_advice").innerHTML = med_advice;
-		document.getElementById("nonmed_advice").innerHTML = nonmed_advice;
         html = ejs.render(template, {
             patient_json: patient_json
         });
