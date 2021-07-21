@@ -7,10 +7,13 @@ window.addEventListener('load', () => {
     fetch(`../advice?id=${id}`).then(async res => {
         let patient_json = await res.json();
 		let med_advice = "Geen";
+		let nonmed_advice = "Geen";
 		if(patient_json["patient_advice"] != undefined && Object.keys(patient_json["patient_advice"]).length > 0){
 			med_advice = createMedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
+			nonmed_advice = createNonmedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
 		}
         document.getElementById("med_advice").innerHTML = med_advice;
+		document.getElementById("nonmed_advice").innerHTML = nonmed_advice;
         html = ejs.render(template, {
             patient_json: patient_json
         });
@@ -27,7 +30,6 @@ window.addEventListener('load', () => {
 function createMedAdviceHTML(json_advice) {
     let med_advice = "";
 	let current_med_name = "";
-	let counter = 0;
         for (let i = 0; i < json_advice.length; ++i ) {
             if(json_advice[i]["ATC_code"].match(/[A-Z][0-9].+/)){
 				let advice_text = formatAdvice(json_advice[i]["advice"], json_advice[i]["freetext"]);
@@ -51,6 +53,31 @@ function createMedAdviceHTML(json_advice) {
         med_advice = "Geen"
     }
     return med_advice;
+}
+
+function createNonmedAdviceHTML(json_advice) {
+    let nonmed_advice = "";
+	let current_category_name = "";	
+        for (let i = 0; i < json_advice.length; ++i ) {
+            if(json_advice[i]["ATC_code"].match(/NONMED/)){
+				let advice_text = formatAdvice(json_advice[i]["advice"], json_advice[i]["freetext"]);
+				advice_text = "<div  class=\"nonmed_advice_text\">" +  advice_text + "</div>";
+				let category_name = json_advice[i]["medcat_name"];
+				let category_name_div = "";
+				if(category_name !== current_category_name){
+					current_category_name = category_name;
+					category_name_div = "<div id=\"div_category_name_" + category_name.substr(0,3).replace("ë", "e")
+                    +"\" class = \"category_name\">"
+                    +category_name
+                    +"</div>\n";
+				}
+                nonmed_advice += category_name_div + advice_text;
+            }
+        }
+    if (nonmed_advice == "") {
+        nonmed_advice = "Geen"
+    }
+    return nonmed_advice;
 }
 
 function formatAdvice(advice_text, freetext){
