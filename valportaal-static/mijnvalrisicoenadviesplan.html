@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <head>
 	<title>Valkliniek Patient Portal</title>
-	<link rel="stylesheet" href="valportaal.css">
+	<link rel="stylesheet" type="text/css" href="valportaal.css">
+
+	<script src="ejs.3-1-6.js"></script>
+	<!-- TODO consider replacing with local copy -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js" integrity="sha512-L03kznCrNOfVxOUovR6ESfCz9Gfny7gihUX/huVbQB9zjODtYpxaVtIaAkpetoiyV2eqWbvxMH9fiSv5enX7bw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<script src="advice.js" async></script>
 </head>
 <body>
 	<script>/**/</script>
@@ -54,15 +60,13 @@
 
 		<h3>Uw persoonlijk advies </h3>
 		Voer uw patient nummer in om uw persoonlijk advies te bekijken.<br/>
-		
+
 
 		<div class="login">
-		<form action="javascript:Login();">
-			<script src="advies-login.js" async></script>
-			<input type="text" placeholder="Patient nummer" id="username" required>
-			<input type="password" placeholder="Wachtwoord" id="password"> 
-			<input type="submit" value="Controleer" >
-		</form>
+			<form action="javascript:Login();">
+				<input type="text" placeholder="Patient nummer" id="username" required>
+				<input type="submit" value="Controleer" >
+			</form>
 		</div>
 
 	</div>
