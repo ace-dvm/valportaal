@@ -5,27 +5,32 @@ let md = new showdown.Converter();
 
 window.addEventListener('load', () => {
     fetch(`../advice?id=${id}`).then(async res => {
-        let patient_json = await res.json();
-		let med_advice = "Geen";
-		let nonmed_advice = "Geen";
-		let risk = "De gemiddelde kans van een val in de komende jaar bij mensen boven 70 jaar is 30%.";
-		if(patient_json["patient_advice"] != undefined && Object.keys(patient_json["patient_advice"]).length > 0){
-			med_advice = createMedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
-			document.getElementById("med_advice").innerHTML = med_advice;
-			nonmed_advice = createNonmedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
-			document.getElementById("nonmed_advice").innerHTML = nonmed_advice;
-			//TODO add personalized risk graphic
-			document.getElementById("risk").innerHTML = risk;
+		if(id == null){
+			document.getElementById("body_wrap").innerHTML = "Klik hier om in te loggen<br><a href=\"login.html\"><button>Inloggen</button></a>";
+			html = "done" //can remove this when testing is done
 		} else {
-			document.getElementById("body_wrap").innerHTML = "Some nice HTML about the portal data not being released yet.";
+			let patient_json = await res.json();
+			let med_advice = "Geen";
+			let nonmed_advice = "Geen";
+			let risk = "De gemiddelde kans van een val in de komende jaar bij mensen boven 70 jaar is 30%.";
+			if(patient_json["patient_advice"] != undefined && Object.keys(patient_json["patient_advice"]).length > 0){
+				med_advice = createMedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
+				document.getElementById("med_advice").innerHTML = med_advice;
+				nonmed_advice = createNonmedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
+				document.getElementById("nonmed_advice").innerHTML = nonmed_advice;
+				//TODO add personalized risk graphic
+				document.getElementById("risk").innerHTML = risk;
+			} else {
+				document.getElementById("body_wrap").innerHTML = "Some nice HTML about the portal data not being released yet.";
+			}
+			html = ejs.render(template, {
+				patient_json: patient_json
+			});
 		}
-        html = ejs.render(template, {
-            patient_json: patient_json
-        });
-        document.getElementById("main-content").innerHTML = html;
-        if (window.readyForTesting !== undefined) {
-            window.readyForTesting();
-        }
+		document.getElementById("main-content").innerHTML = html;
+		if (window.readyForTesting !== undefined) {
+			window.readyForTesting();
+		}
     }).catch(err => {
         console.log(err)
     });

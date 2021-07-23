@@ -50,3 +50,11 @@ test("Advice page should not contain 'loading' after it has finished loading",
     expect(dom.window.document.body.textContent).toEqual(
         expect.not.stringMatching(/loading/i));
 })
+
+test("If id==null, display login button",
+        async () => {
+    fetch.mockResponse('{ "foo": "bar" }');
+    let dom = await loadPage(advice_filename, '');
+    expect(dom.window.document.body.textContent).toEqual(
+        expect.stringMatching(/in te loggen/i));
+})
