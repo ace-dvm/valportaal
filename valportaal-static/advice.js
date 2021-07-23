@@ -21,7 +21,7 @@ window.addEventListener('load', () => {
 				//TODO add personalized risk graphic
 				document.getElementById("risk").innerHTML = risk;
 			} else {
-				document.getElementById("body_wrap").innerHTML = "Some nice HTML about the portal data not being released yet.";
+				document.getElementById("body_wrap").innerHTML = "<p>Er is nog geen persoonlijk advies beschikbaar.</p>\nDit kan komen doordat:<br/>\n<ul>\n<li>\nU heeft nog geen afspraak gehad met uw arts. U zou een persoonlijk advies op dit pagina vinden na uw afspraak.<br/>\n</li>\n<li>\nUw doktor heeft uw advies nog niet goedgekeurd. Dit kan een tijdje duren, vooral als de doktor wacht nog op resultaten van bijvoorbeeld bloedonderzoeken.<br/>\nAls u een Valpoli afspraak hebt gehad en de doktor geeft aan dat u uw advies zullen vinden up deze portaal, neem dan kontact met de Valpoli op. \n</li>\n</ul>\n";
 			}
 			html = ejs.render(template, {
 				patient_json: patient_json
