@@ -8,11 +8,14 @@ window.addEventListener('load', () => {
         let patient_json = await res.json();
 		let med_advice = "Geen";
 		let nonmed_advice = "Geen";
+		let risk = "De gemiddelde kans van een val in de komende jaar bij mensen boven 70 jaar is 30%.";
 		if(patient_json["patient_advice"] != undefined && Object.keys(patient_json["patient_advice"]).length > 0){
 			med_advice = createMedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
 			document.getElementById("med_advice").innerHTML = med_advice;
 			nonmed_advice = createNonmedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
 			document.getElementById("nonmed_advice").innerHTML = nonmed_advice;
+			//TODO add personalized risk graphic
+			document.getElementById("risk").innerHTML = risk;
 		} else {
 			document.getElementById("body_wrap").innerHTML = "Some nice HTML about the portal data not being released yet.";
 		}
