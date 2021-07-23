@@ -40,7 +40,7 @@ test("Advice page should contain 'loading' before the javascript runs",
     // NB: this is how to load the page without running the page's javascript
     let dom = await JSDOM.fromFile(advice_filename)
     expect(dom.window.document.body.textContent).toEqual(
-        expect.stringMatching(/loading/i));
+        expect.stringMatching(/laden.../i));
 })
 
 test("Advice page should not contain 'loading' after it has finished loading",
@@ -48,7 +48,7 @@ test("Advice page should not contain 'loading' after it has finished loading",
     fetch.mockResponse('{ "foo": "bar" }');
     let dom = await loadPage(advice_filename, '?id=3');
     expect(dom.window.document.body.textContent).toEqual(
-        expect.not.stringMatching(/loading/i));
+        expect.not.stringMatching(/laden.../i));
 })
 
 test("If id==null, display login button",
@@ -58,3 +58,5 @@ test("If id==null, display login button",
     expect(dom.window.document.body.textContent).toEqual(
         expect.stringMatching(/in te loggen/i));
 })
+
+// TODO add some tests for logged-in-no-advice state and logged-in-with-advice state

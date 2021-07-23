@@ -27,7 +27,6 @@ window.addEventListener('load', () => {
 				patient_json: patient_json
 			});
 		}
-		document.getElementById("main-content").innerHTML = html;
 		if (window.readyForTesting !== undefined) {
 			window.readyForTesting();
 		}
