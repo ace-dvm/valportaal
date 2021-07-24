@@ -19,12 +19,16 @@ const advice_filename = 'valportaal-static/advice.html';
 async function loadAdvicePage(urlparams='', serverPatientAdvice='') {
     fetch.mockResponse(serverPatientAdvice);
 
+    let file_url = 'file://' + process.cwd() + '/' + advice_filename;
+    if (urlparams) {
+        file_url += '?' + urlparams;
+    }
     let dom = await JSDOM.fromFile(advice_filename,
         {
             runScripts: "dangerously", // allow scripts (run as user)
             includeNodeLocations: true, // track line numbers for debugging
             resources: "usable", // allow loading of scripts, stylesheets, etc.
-            url: 'file://' + process.cwd() + '/' + advice_filename + '?' + urlparams
+            url: file_url
         });
     dom.window.fetch = fetch;
 
@@ -63,7 +67,10 @@ test("If id==null, display login button",
 
 test("Advice page without patient data should not contain a login",
         async () => {
-    let dom = await loadAdvicePage("id=3", '{ "patient_id": 3, "patient_advice": [] }');
+    let dom = await loadAdvicePage("id=3", `{
+        "patient_id": 3,
+        "patient_advice": []
+    }`);
 
     expect(dom.window.document.body.textContent).toEqual(
         expect.not.stringMatching(/in te loggen/i)
@@ -72,7 +79,11 @@ test("Advice page without patient data should not contain a login",
 
 test("Advice page without patient data should contain 'geen persoon'",
         async () => {
-    let dom = await loadAdvicePage("id=3", '{ "patient_id": 3, "patient_advice": [] }');
+    let dom = await loadAdvicePage("id=3", `{
+        "patient_id": 3,
+        "patient_advice": []
+    }`);
+
     expect(dom.window.document.body.textContent).toEqual(
         expect.stringMatching(/geen persoon/i)
     );

@@ -4,8 +4,7 @@
 "use strict";
 
 if (navigator.userAgent.includes("Node.js") ||
-    navigator.userAgent.includes("jsdom")) {
-} else {
+    navigator.userAgent.includes("jsdom")) {} else {
     window.addEventListener('load', advicePageLoad);
 }
 
