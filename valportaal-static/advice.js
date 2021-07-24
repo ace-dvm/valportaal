@@ -5,14 +5,8 @@
 
 if (navigator.userAgent.includes("Node.js") ||
     navigator.userAgent.includes("jsdom")) {
-    console.log('skipping window.addEventListener("load")');
 } else {
     window.addEventListener('load', advicePageLoad);
-}
-
-
-function foo() {
-    return advicePageLoad();
 }
 
 async function advicePageLoad() {

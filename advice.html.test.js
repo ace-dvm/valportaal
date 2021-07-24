@@ -12,6 +12,8 @@ beforeEach(() => {
     fetchMock.resetMocks();
 });
 
+let process = require('process');
+
 const advice_filename = 'valportaal-static/advice.html';
 
 async function loadAdvicePage(urlparams='', serverPatientAdvice='') {
@@ -22,21 +24,20 @@ async function loadAdvicePage(urlparams='', serverPatientAdvice='') {
             runScripts: "dangerously", // allow scripts (run as user)
             includeNodeLocations: true, // track line numbers for debugging
             resources: "usable", // allow loading of scripts, stylesheets, etc.
+            url: 'file://' + process.cwd() + '/' + advice_filename + '?' + urlparams
         });
-    dom.url += urlparams;
-    console.log(dom.window.document.body.textContent);
-    console.log(JSON.stringify(dom, null, 4));
     dom.window.fetch = fetch;
-
 
     // advicePageLoad() is typically called by page load,
     // but we need to set the fetch first
-    // await dom.window.foo(); //advicePageLoad();
+    while (dom.window.advicePageLoad === undefined) {
+        await new Promise((result) => setTimeout(result, 1));
+    }
+    await dom.window.advicePageLoad();
 
     return dom;
 }
 
-if (0) {
 test("Advice page should contain 'loading' before the javascript runs",
         async () => {
     // NB: this is how to load the page without running the page's javascript
@@ -62,10 +63,7 @@ test("If id==null, display login button",
 
 test("Advice page without patient data should not contain a login",
         async () => {
-    let dom = await loadAdvicePage("id=3", `{
-        patient_id: 3,
-        patient_advice: []
-    }`);
+    let dom = await loadAdvicePage("id=3", '{ "patient_id": 3, "patient_advice": [] }');
 
     expect(dom.window.document.body.textContent).toEqual(
         expect.not.stringMatching(/in te loggen/i)
@@ -74,17 +72,13 @@ test("Advice page without patient data should not contain a login",
 
 test("Advice page without patient data should contain 'geen persoon'",
         async () => {
-    let dom = await loadAdvicePage("id=3", `{
-        patient_id: 3,
-        patient_advice: []
-    }`);
+    let dom = await loadAdvicePage("id=3", '{ "patient_id": 3, "patient_advice": [] }');
     expect(dom.window.document.body.textContent).toEqual(
         expect.stringMatching(/geen persoon/i)
     );
 });
 
 // TODO add some tests for logged-in-with-advice state
-}
 
 test("format advice", async () => {
     let dom = await loadAdvicePage();
