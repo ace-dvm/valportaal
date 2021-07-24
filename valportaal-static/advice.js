@@ -1,39 +1,48 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2021 S. K. Medlock, E. K. Herman, K. M. Shaw
+// vim: set sts=4 shiftwidth=4 expandtab :
+"use strict";
+
 let params = new URLSearchParams(window.location.search)
 let id = params.get('id');
 let template = '<%= JSON.stringify(patient_json) %>';
 let md = new showdown.Converter();
 
-window.addEventListener('load', advicePageLoad);
-
-async function advicePageLoad() {
-    fetch(`../advice?id=${id}`).then(async res => {
-        if (id == null) {
-            document.getElementById("body_wrap").innerHTML = "Klik hier om in te loggen<br><a href=\"login.html\"><button>Inloggen</button></a>";
-            html = "done" //can remove this when testing is done
-        } else {
-            let patient_json = await res.json();
-            let med_advice = "Geen";
-            let nonmed_advice = "Geen";
-            let risk = "De gemiddelde kans van een val in de komende jaar bij mensen boven 70 jaar is 30%.";
-            if (patient_json["patient_advice"] != undefined && Object.keys(patient_json["patient_advice"]).length > 0) {
-                med_advice = createMedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
-                document.getElementById("med_advice").innerHTML = med_advice;
-                nonmed_advice = createNonmedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
-                document.getElementById("nonmed_advice").innerHTML = nonmed_advice;
-                //TODO add personalized risk graphic
-                document.getElementById("risk").innerHTML = risk;
-            } else {
-                document.getElementById("body_wrap").innerHTML = "<p>Er is nog geen persoonlijk advies beschikbaar.</p>\nDit kan komen doordat:<br/>\n<ul>\n<li>\nU heeft nog geen afspraak gehad met uw arts. U zou een persoonlijk advies op dit pagina vinden na uw afspraak.<br/>\n</li>\n<li>\nUw doktor heeft uw advies nog niet goedgekeurd. Dit kan een tijdje duren, vooral als de doktor wacht nog op resultaten van bijvoorbeeld bloedonderzoeken.<br/>\nAls u een Valpoli afspraak hebt gehad en de doktor geeft aan dat u uw advies zullen vinden up deze portaal, neem dan kontact met de Valpoli op. \n</li>\n</ul>\n";
-            }
-            html = ejs.render(template, {
-                patient_json: patient_json
-            });
-        }
+window.addEventListener('load', async () => {
+    try {
+        await advicePageLoad();
+    } catch (err) {
+        console.log(err)
+    } finally {
         if (window.readyForTesting !== undefined) {
             window.readyForTesting();
         }
-    }).catch(err => {
-        console.log(err)
+    }
+});
+
+async function advicePageLoad() {
+    if (id == null) {
+        document.getElementById("body_wrap").innerHTML = "Klik hier om in te loggen<br><a href=\"login.html\"><button>Inloggen</button></a>";
+        return;
+    }
+
+    let res = await fetch(`../advice?id=${id}`);
+    let patient_json = await res.json();
+    let med_advice = "Geen";
+    let nonmed_advice = "Geen";
+    let risk = "De gemiddelde kans van een val in de komende jaar bij mensen boven 70 jaar is 30%.";
+    if (patient_json["patient_advice"] != undefined && Object.keys(patient_json["patient_advice"]).length > 0) {
+        med_advice = createMedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
+        document.getElementById("med_advice").innerHTML = med_advice;
+        nonmed_advice = createNonmedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
+        document.getElementById("nonmed_advice").innerHTML = nonmed_advice;
+        //TODO add personalized risk graphic
+        document.getElementById("risk").innerHTML = risk;
+    } else {
+        document.getElementById("body_wrap").innerHTML = "<p>Er is nog geen persoonlijk advies beschikbaar.</p>\nDit kan komen doordat:<br/>\n<ul>\n<li>\nU heeft nog geen afspraak gehad met uw arts. U zou een persoonlijk advies op dit pagina vinden na uw afspraak.<br/>\n</li>\n<li>\nUw doktor heeft uw advies nog niet goedgekeurd. Dit kan een tijdje duren, vooral als de doktor wacht nog op resultaten van bijvoorbeeld bloedonderzoeken.<br/>\nAls u een Valpoli afspraak hebt gehad en de doktor geeft aan dat u uw advies zullen vinden up deze portaal, neem dan kontact met de Valpoli op. \n</li>\n</ul>\n";
+    }
+    html = ejs.render(template, {
+        patient_json: patient_json
     });
 };
 
