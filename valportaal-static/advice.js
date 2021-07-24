@@ -27,8 +27,9 @@ async function advicePageLoad() {
 		document.getElementById("med_advice").innerHTML = med_advice;
 		nonmed_advice = createNonmedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
 		document.getElementById("nonmed_advice").innerHTML = nonmed_advice;
-		if(!((patient_json["patient_advice"][0]["json_advice"][0]["prediction_result"])==null)){
-			risk = createRiskHTML(patient_json["patient_advice"][0]["json_advice"]);
+		let risk_score = patient_json["patient_advice"][0]["json_advice"][0]["prediction_result"];
+		if(!(risk_score==null)){
+			risk = createRiskHTML(risk_score);
 		}
 		document.getElementById("risk").innerHTML = risk;
 	} else {
@@ -101,11 +102,10 @@ function formatAdvice(advice_text, freetext) {
     return formatted_advice;
 }
 
-function createRiskHTML(json_advice){
-	let risk_score = json_advice[0]["prediction_result"];
+function createRiskHTML(risk_score){
 //	let html = risk_score;
-	let html = "<div id=\"guage_bkg\" class=\"gauge_background\"><div class=\"gauge_text_left\">Laag risico</div><div class=\"gauge_line\" style=\"left: "
+	let html = "<div id=\"guage_bkg\" class=\"gauge_background\"><div class=\"gauge_line\" style=\"left: "
 	+ risk_score
-	+ "%\"></div><div class=\"gauge_text_right\">Hoog risico</div></div><!-- gauge_background -->";
+	+ "%\"></div><div class=\"gauge_text_left\">Laag risico</div><div class=\"gauge_text_right\">Hoog risico</div></div><!-- gauge_background -->";
 	return html;
 }
