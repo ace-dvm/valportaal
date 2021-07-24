@@ -12,28 +12,35 @@ beforeEach(() => {
     fetchMock.resetMocks();
 });
 
-// Loads the DOM for the given html file, adding on extra parameters if needed
-// (e.g. urlparams="?id=5,foo=2"), enabling the (mocked) fetch function, and
-// waiting for the page's code to call the "readyForTesting()" function before
-// returning.
-async function loadPage(filename, urlparams="") {
-    let dom = await JSDOM.fromFile(filename,
+let process = require('process');
+
+const advice_filename = 'valportaal-static/advice.html';
+
+async function loadAdvicePage(urlparams='', serverPatientAdvice='') {
+    fetch.mockResponse(serverPatientAdvice);
+
+    let file_url = 'file://' + process.cwd() + '/' + advice_filename;
+    if (urlparams) {
+        file_url += '?' + urlparams;
+    }
+    let dom = await JSDOM.fromFile(advice_filename,
         {
             runScripts: "dangerously", // allow scripts (run as user)
             includeNodeLocations: true, // track line numbers for debugging
-            resources: "usable" // allow loading of scripts, stylesheets, etc.
+            resources: "usable", // allow loading of scripts, stylesheets, etc.
+            url: file_url
         });
-    dom.url += urlparams;
     dom.window.fetch = fetch;
 
-    // set window.readyForTesting to a new function and wait for that function
-    // to be called by the webpage.
-    await new Promise(resolve => { dom.window.readyForTesting = resolve; });
+    // advicePageLoad() is typically called by page load,
+    // but we need to set the fetch first
+    while (dom.window.advicePageLoad === undefined) {
+        await new Promise((result) => setTimeout(result, 1));
+    }
+    await dom.window.advicePageLoad();
 
     return dom;
 }
-
-const advice_filename = 'valportaal-static/advice.html';
 
 test("Advice page should contain 'loading' before the javascript runs",
         async () => {
@@ -41,22 +48,52 @@ test("Advice page should contain 'loading' before the javascript runs",
     let dom = await JSDOM.fromFile(advice_filename)
     expect(dom.window.document.body.textContent).toEqual(
         expect.stringMatching(/laden.../i));
-})
+});
 
 test("Advice page should not contain 'loading' after it has finished loading",
         async () => {
-    fetch.mockResponse('{ "foo": "bar" }');
-    let dom = await loadPage(advice_filename, '?id=3');
+    let dom = await loadAdvicePage("", "");
     expect(dom.window.document.body.textContent).toEqual(
         expect.not.stringMatching(/laden.../i));
-})
+});
 
 test("If id==null, display login button",
         async () => {
-    fetch.mockResponse('{ "foo": "bar" }');
-    let dom = await loadPage(advice_filename, '');
+    let dom = await loadAdvicePage("", "");
     expect(dom.window.document.body.textContent).toEqual(
-        expect.stringMatching(/in te loggen/i));
-})
+        expect.stringMatching(/in te loggen/i)
+    );
+});
 
-// TODO add some tests for logged-in-no-advice state and logged-in-with-advice state
+test("Advice page without patient data should not contain a login",
+        async () => {
+    let dom = await loadAdvicePage("id=3", `{
+        "patient_id": 3,
+        "patient_advice": []
+    }`);
+
+    expect(dom.window.document.body.textContent).toEqual(
+        expect.not.stringMatching(/in te loggen/i)
+    );
+});
+
+test("Advice page without patient data should contain 'geen persoon'",
+        async () => {
+    let dom = await loadAdvicePage("id=3", `{
+        "patient_id": 3,
+        "patient_advice": []
+    }`);
+
+    expect(dom.window.document.body.textContent).toEqual(
+        expect.stringMatching(/geen persoon/i)
+    );
+});
+
+// TODO add some tests for logged-in-with-advice state
+
+test("format advice", async () => {
+    let dom = await loadAdvicePage();
+    expect(dom.window.formatAdvice('foo', '')).toBe('<p>foo</p>');
+    expect(dom.window.formatAdvice('foo: {{free text stuff }}', 'bar'))
+        .toBe('<p>foo: bar</p>');
+});
