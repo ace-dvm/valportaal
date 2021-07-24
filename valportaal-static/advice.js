@@ -3,7 +3,9 @@ let id = params.get('id');
 let template = '<%= JSON.stringify(patient_json) %>';
 let md = new showdown.Converter();
 
-window.addEventListener('load', () => {
+window.addEventListener('load', advicePageLoad);
+
+async function advicePageLoad() {
     fetch(`../advice?id=${id}`).then(async res => {
 		if(id == null){
 			document.getElementById("body_wrap").innerHTML = "Klik hier om in te loggen<br><a href=\"login.html\"><button>Inloggen</button></a>";
@@ -33,7 +35,7 @@ window.addEventListener('load', () => {
     }).catch(err => {
         console.log(err)
     });
-});
+};
 
 //TODO this function is tested in the testcafe test, but should probably have a unit test too. advice.test.js doesn't exist yet.
 function createMedAdviceHTML(json_advice) {
