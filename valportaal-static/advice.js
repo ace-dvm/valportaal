@@ -18,7 +18,9 @@ window.addEventListener('load', () => {
 				document.getElementById("med_advice").innerHTML = med_advice;
 				nonmed_advice = createNonmedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
 				document.getElementById("nonmed_advice").innerHTML = nonmed_advice;
-				//TODO add personalized risk graphic
+				if(!((patient_json["patient_advice"][0]["json_advice"][0]["prediction_result"])==null)){
+					risk = createRiskHTML(patient_json["patient_advice"][0]["json_advice"]);
+				}
 				document.getElementById("risk").innerHTML = risk;
 			} else {
 				document.getElementById("body_wrap").innerHTML = "<p>Er is nog geen persoonlijk advies beschikbaar.</p>\nDit kan komen doordat:<br/>\n<ul>\n<li>\nU heeft nog geen afspraak gehad met uw arts. U zou een persoonlijk advies op dit pagina vinden na uw afspraak.<br/>\n</li>\n<li>\nUw doktor heeft uw advies nog niet goedgekeurd. Dit kan een tijdje duren, vooral als de doktor wacht nog op resultaten van bijvoorbeeld bloedonderzoeken.<br/>\nAls u een Valpoli afspraak hebt gehad en de doktor geeft aan dat u uw advies zullen vinden up deze portaal, neem dan kontact met de Valpoli op. \n</li>\n</ul>\n";
@@ -97,4 +99,13 @@ function formatAdvice(advice_text, freetext){
 	let regex = /(\{\{free text.*\}\})/;
 	formatted_advice = formatted_advice.replace(regex, freetext);
 	return formatted_advice;
+}
+
+function createRiskHTML(json_advice){
+	let risk_score = json_advice[0]["prediction_result"];
+//	let html = risk_score;
+	let html = "<div id=\"guage_bkg\" class=\"gauge_background\"><div class=\"gauge_text_left\">Laag risico</div><div class=\"gauge_line\" style=\"left: "
+	+ risk_score
+	+ "%\"></div><div class=\"gauge_text_right\">Hoog risico</div></div><!-- gauge_background -->";
+	return html;
 }

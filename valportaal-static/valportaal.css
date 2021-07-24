@@ -193,6 +193,43 @@ flex-direction: column;
 .patient_nonmed_category{
 	display: none;
 }
+div.gauge_background {
+    width:80%;
+    height: 0px;
+    padding-bottom: 8%;
+    /* set "good", "warn", and "critical" thresholds specifically */
+    background: linear-gradient(to right, #0F0 5%, #FF0 10%, #F00 30%);
+    display: inline-block;
+    margin-bottom: 3ex;
+}
+
+div.gauge_line {
+    width: calc(0.4% + 1px);
+    margin-left: calc(-(0.4% / 2 + 0.5px));
+    margin-right: calc(-(0.4% / 2 + 0.5px));
+    padding-bottom: calc(10% + 1ex);
+    padding-left: 0;
+    padding-right: 0;
+    background: #000;
+    position: relative;
+    top: -0.5ex;
+    display: inline-block;
+}
+div.gauge_text_left {
+    position: relative;
+    top: 10px;
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+}
+div.gauge_text_right {
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    top: 10px;
+    left: calc(100% - 17ch - 1em);
+    display: inline-block;
+}
 
 /* for login page */
 .login {
