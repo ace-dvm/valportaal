@@ -32,7 +32,7 @@ async function advicePageLoad() {
 		document.getElementById("other_med_advice").innerHTML = other_med_advice;
 		nonmed_advice = createNonmedAdviceHTML(json_advice);
 		document.getElementById("nonmed_advice").innerHTML = nonmed_advice;
-		let time_finalized = niceDateTime(json_advice[0]["time_finalized"]);
+		let time_finalized = niceDateTime(patient_json["patient_advice"][0]["row_created"]);
 		last_changed = last_changed.replace("bij uw bezoek op de Valpoli", "op: " + time_finalized);
 		document.getElementById("last_changed").innerHTML = last_changed;
 		let risk_score = json_advice[0]["prediction_result"];
