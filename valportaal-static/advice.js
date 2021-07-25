@@ -21,28 +21,28 @@ async function advicePageLoad() {
     let patient_json = await res.json();
     let med_advice = "Geen";
     let nonmed_advice = "Geen";
-	let other_med_advice = "";
-	let last_changed = "Let op! Dit advies is voor het laatst gewizigd bij uw bezoek op de Valpoli.<br>Het is mogelijk dat u sindsdien een ander advies van een dokter gehad heeft.<br>Wijzigingen in uw medicijnen of in uw behandeling die na die datum zijn gemaakt, staan niet in dit Valportaal.";
+    let other_med_advice = "";
+    let last_changed = "Let op! Dit advies is voor het laatst gewizigd bij uw bezoek op de Valpoli.<br>Het is mogelijk dat u sindsdien een ander advies van een dokter gehad heeft.<br>Wijzigingen in uw medicijnen of in uw behandeling die na die datum zijn gemaakt, staan niet in dit Valportaal.";
     let risk = "De gemiddelde kans van een val in de komende jaar bij mensen boven 70 jaar is 30%.";
-	if(patient_json["patient_advice"] != undefined && Object.keys(patient_json["patient_advice"]).length > 0){
-		let json_advice = patient_json["patient_advice"][0]["json_advice"];
-		med_advice = createMedAdviceHTML(json_advice);
-		document.getElementById("med_advice").innerHTML = med_advice;
-		other_med_advice = createOtherMedAdviceHTML(json_advice);
-		document.getElementById("other_med_advice").innerHTML = other_med_advice;
-		nonmed_advice = createNonmedAdviceHTML(json_advice);
-		document.getElementById("nonmed_advice").innerHTML = nonmed_advice;
-		let time_finalized = niceDateTime(patient_json["patient_advice"][0]["row_created"]);
-		last_changed = last_changed.replace("bij uw bezoek op de Valpoli", "op: " + time_finalized);
-		document.getElementById("last_changed").innerHTML = last_changed;
-		let risk_score = json_advice[0]["prediction_result"];
-		if(!(risk_score==null)){
-			risk = createRiskHTML(risk_score);
-		}
-		document.getElementById("risk").innerHTML = risk;
-	} else {
-		document.getElementById("body_wrap").innerHTML = "<p>Er is nog geen persoonlijk advies beschikbaar.</p>\nDit kan komen doordat:<br/>\n<ul>\n<li>\nU heeft nog geen afspraak gehad met uw arts. U zou een persoonlijk advies op dit pagina vinden na uw afspraak.<br/>\n</li>\n<li>\nUw doktor heeft uw advies nog niet goedgekeurd. Dit kan een tijdje duren, vooral als de doktor wacht nog op resultaten van bijvoorbeeld bloedonderzoeken.<br/>\nAls u een Valpoli afspraak hebt gehad en de doktor geeft aan dat u uw advies zullen vinden up deze portaal, neem dan kontact met de Valpoli op. \n</li>\n</ul>\n";
-	}
+    if (patient_json["patient_advice"] != undefined && Object.keys(patient_json["patient_advice"]).length > 0) {
+        let json_advice = patient_json["patient_advice"][0]["json_advice"];
+        med_advice = createMedAdviceHTML(json_advice);
+        document.getElementById("med_advice").innerHTML = med_advice;
+        other_med_advice = createOtherMedAdviceHTML(json_advice);
+        document.getElementById("other_med_advice").innerHTML = other_med_advice;
+        nonmed_advice = createNonmedAdviceHTML(json_advice);
+        document.getElementById("nonmed_advice").innerHTML = nonmed_advice;
+        let time_finalized = niceDateTime(patient_json["patient_advice"][0]["row_created"]);
+        last_changed = last_changed.replace("bij uw bezoek op de Valpoli", "op: " + time_finalized);
+        document.getElementById("last_changed").innerHTML = last_changed;
+        let risk_score = json_advice[0]["prediction_result"];
+        if (!(risk_score == null)) {
+            risk = createRiskHTML(risk_score);
+        }
+        document.getElementById("risk").innerHTML = risk;
+    } else {
+        document.getElementById("body_wrap").innerHTML = "<p>Er is nog geen persoonlijk advies beschikbaar.</p>\nDit kan komen doordat:<br/>\n<ul>\n<li>\nU heeft nog geen afspraak gehad met uw arts. U zou een persoonlijk advies op dit pagina vinden na uw afspraak.<br/>\n</li>\n<li>\nUw doktor heeft uw advies nog niet goedgekeurd. Dit kan een tijdje duren, vooral als de doktor wacht nog op resultaten van bijvoorbeeld bloedonderzoeken.<br/>\nAls u een Valpoli afspraak hebt gehad en de doktor geeft aan dat u uw advies zullen vinden up deze portaal, neem dan kontact met de Valpoli op. \n</li>\n</ul>\n";
+    }
 };
 
 //TODO this function is tested in the testcafe test, but should probably have a unit test too. advice.test.js doesn't exist yet.
@@ -120,19 +120,27 @@ function formatAdvice(advice_text, freetext) {
     return formatted_advice;
 }
 
-function createRiskHTML(risk_score){
-	let html = "<div id=\"guage_bkg\" class=\"gauge_background\"><div class=\"gauge_line\" style=\"left: "
-	+ risk_score
-	+ "%\"></div><div class=\"gauge_text_left\">Laag risico</div><div class=\"gauge_text_right\">Hoog risico</div></div><!-- gauge_background -->";
-	return html;
+function createRiskHTML(risk_score) {
+    let html = "<div id=\"guage_bkg\" class=\"gauge_background\"><div class=\"gauge_line\" style=\"left: " +
+        risk_score +
+        "%\"></div><div class=\"gauge_text_left\">Laag risico</div><div class=\"gauge_text_right\">Hoog risico</div></div><!-- gauge_background -->";
+    return html;
 }
 
-function niceDateTime(json_datetime){
-	let niceDate = new Date(json_datetime);
-	let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
-	let niceDate1 = niceDate.toLocaleDateString('nl-NL',options);
-	options = {hour: '2-digit', minute:'2-digit'};
-	let niceDate2 = niceDate.toLocaleTimeString('nl-NL',options);
-	niceDate = "<strong>" + niceDate1 + " om " + niceDate2 + "</strong>";
-	return niceDate;
+function niceDateTime(json_datetime) {
+    let niceDate = new Date(json_datetime);
+    let options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
+    let niceDate1 = niceDate.toLocaleDateString('nl-NL', options);
+    options = {
+        hour: '2-digit',
+        minute: '2-digit'
+    };
+    let niceDate2 = niceDate.toLocaleTimeString('nl-NL', options);
+    niceDate = "<strong>" + niceDate1 + " om " + niceDate2 + "</strong>";
+    return niceDate;
 }
