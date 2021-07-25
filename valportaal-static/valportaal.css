@@ -192,6 +192,15 @@ flex-direction: column;
 	font-weight: bold;
 	width: 100%;
 }
+.med_name{
+	font-weight: bold;
+	color: #f28931;
+	margin-top: 15px;
+}
+.category_name{
+	font-weight: bold;
+	color: #f28931	
+}
 .patient_nonmed_category{
 	display: none;
 }
