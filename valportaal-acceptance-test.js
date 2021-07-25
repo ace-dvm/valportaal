@@ -94,5 +94,8 @@ test('Check advice page', async t => {
 
     let nonmed_advice = Selector('#nonmed_advice');
     await t.expect(nonmed_advice.withText('Valpreventie bij ouderen').exists).ok();
+	
+	let last_changed = Selector('#last_changed');
+    await t.expect(last_changed.withText('maandag 19 juli 2021 om 15:14.').exists).ok();
 
 });
