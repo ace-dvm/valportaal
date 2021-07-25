@@ -47,7 +47,7 @@ let patient_export_data = [{
     "ATC_code": "OTHER",
     "advice": "Uw arts heeft nog de volgende advies voor u over uw medicatie: {{free text}}",
     "freetext": "Please continue taking all other medications.",
-	"prediction_result": 50
+    "prediction_result": 50
 }, {
     "patient_id": 168,
     "medcat_name": "Valpreventie advies",
@@ -60,16 +60,11 @@ let patient_export_data = [{
 "use strict";
 
 const fs = require('fs');
-const portal_factory = require('./valportaal');
+const exporter = require('./portal-export');
 
 async function load_patient_168_data() {
-
-    let portal = portal_factory.valportaal_init();
-    try {
-        await portal.setAdviceForPatient(168, patient_export_data);
-    } finally {
-        await portal.shutdown();
-    }
+    await exporter.export_to_portal_db('./dbconfig.env',
+        168, patient_export_data);
 }
 
 test('Check advice page', async t => {
@@ -88,14 +83,14 @@ test('Check advice page', async t => {
     await t.expect(med_advice.withText('My comment').exists).ok();
     // TODO not sure that this test does what I want. I want to confirm that Methocarbamol does not appear > 1x.
     await t.expect(med_advice.withText(/(Methocarbamol.*){2}/).exists).notOk();
-	
-	let other_med_advice = Selector('#other_med_advice');
-	await t.expect(other_med_advice.withText('Please continue').exists).ok();
+
+    let other_med_advice = Selector('#other_med_advice');
+    await t.expect(other_med_advice.withText('Please continue').exists).ok();
 
     let nonmed_advice = Selector('#nonmed_advice');
     await t.expect(nonmed_advice.withText('Valpreventie bij ouderen').exists).ok();
-	
-	let last_changed = Selector('#last_changed');
+
+    let last_changed = Selector('#last_changed');
     await t.expect(last_changed.withText('op: ').exists).ok();
 
 });

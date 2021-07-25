@@ -24,25 +24,6 @@ async function shutdown() {
     }
 }
 
-async function setAdviceForPatient(patient_id, json_advice) {
-    let sqls_and_params = [];
-
-    sqls_and_params.push([
-        "DELETE FROM patient_advice WHERE patient_id = ?",
-        [patient_id]
-    ]);
-
-    sqls_and_params.push([
-        "INSERT INTO patient_advice (patient_id, json_advice) VALUES (?,?)",
-        [patient_id, JSON.stringify(json_advice)]
-    ]);
-
-    let db = await this.db_init();
-    let results = await db.as_sql_transaction(sqls_and_params);
-
-    return results;
-}
-
 async function getAdviceForPatient(patient_id) {
     let sql = "SELECT * FROM patient_advice WHERE patient_id = ?";
     let params = [patient_id];
@@ -65,7 +46,6 @@ function valportaal_init(db, db_config, db_env_file_path) {
 
         /* public API methods */
         getAdviceForPatient: getAdviceForPatient,
-        setAdviceForPatient: setAdviceForPatient,
         shutdown: shutdown,
     };
     return valportaal;
