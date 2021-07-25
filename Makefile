@@ -49,7 +49,7 @@ portal-dbsetup: npmsetup portal-db-scripts.env docker.portal-db-scripts.env
 	bin/setup-new-db-container.sh docker.portal-db-scripts.env
 	bin/db-create-portal-tables.sh portal-db-scripts.env
 
-dbsetup: portal-dbsetup
+dbsetup: links portal-dbsetup
 
 valportaal-static/ejs.3-1-6.js:
 	wget https://github.com/mde/ejs/releases/download/v3.1.6/ejs.js
