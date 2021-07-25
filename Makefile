@@ -41,7 +41,7 @@ dbconfig.env: docker-dbconfig.env
 
 dbsetup: npmsetup dbconfig.env db-scripts.env
 	bin/setup-new-db-container.sh
-	bin/db-create-tables.sh
+	bin/db-create-valportaal-tables.sh
 
 valportaal-static/ejs.3-1-6.js:
 	wget https://github.com/mde/ejs/releases/download/v3.1.6/ejs.js

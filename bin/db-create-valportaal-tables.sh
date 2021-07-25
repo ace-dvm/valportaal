@@ -20,7 +20,7 @@ done
 
 echo '# load schema'
 for SQL in \
-	createTables.sql
+	createValPortaalTables.sql
 do
 	echo "# sourcing $SQL"
 	$RUN_SQL "source ${DB_SQL_SCRIPTS_DIR}/$SQL"
