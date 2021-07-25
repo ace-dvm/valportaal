@@ -8,7 +8,7 @@ const adb = require('./adficeDB');
 
 async function db_init() {
     if (!this.db) {
-        this.db = await adb.init();
+        this.db = await adb.init(this.db_config, this.db_env_file_path);
     }
     return this.db;
 }
@@ -24,6 +24,25 @@ async function shutdown() {
     }
 }
 
+async function setAdviceForPatient(patient_id, json_advice) {
+    let sqls_and_params = [];
+
+    sqls_and_params.push([
+        "DELETE FROM patient_advice WHERE patient_id = ?",
+        [patient_id]
+    ]);
+
+    sqls_and_params.push([
+        "INSERT INTO patient_advice (patient_id, json_advice) VALUES (?,?)",
+        [patient_id, JSON.stringify(json_advice)]
+    ]);
+
+    let db = await this.db_init();
+    let results = await db.as_sql_transaction(sqls_and_params);
+
+    return results;
+}
+
 async function getAdviceForPatient(patient_id) {
     let sql = "SELECT * FROM patient_advice WHERE patient_id = ?";
     let params = [patient_id];
@@ -34,16 +53,19 @@ async function getAdviceForPatient(patient_id) {
     return results;
 }
 
-function valportaal_init(db) {
+function valportaal_init(db, db_config, db_env_file_path) {
     let valportaal = {
         /* private variables */
         db: db,
+        db_config: db_config,
+        db_env_file_path: db_env_file_path,
 
         /* "private" and "friend" member functions */
         db_init: db_init,
 
         /* public API methods */
         getAdviceForPatient: getAdviceForPatient,
+        setAdviceForPatient: setAdviceForPatient,
         shutdown: shutdown,
     };
     return valportaal;
