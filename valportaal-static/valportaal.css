@@ -9,7 +9,6 @@ body {
 	color: rgba(0, 55, 65, 1);
 	margin: auto;
 	margin-bottom: 1em;
-	padding-bottom: 2em;
 	width: 95%;
 	padding-top: 10px;
 	display: block;
@@ -46,8 +45,7 @@ body {
 	display: flex;
 	justify-content: space-around;
 	background-color: white;
-	width: 95%;
-	margin-left: 2.5%;
+	width: 100%;
 	margin-bottom: 1em;
 }
 
@@ -56,7 +54,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin-top: 5em;
+	margin-top: 1em;
 	
 }
 .nav-img{
@@ -133,32 +131,31 @@ h5 {
 	padding-right: 1em;
 }
 
-/* items below this line are NOT YET CHECKED */
-
 .brochure-box {
 display:flex; 
 flex-direction: column;
 }
 
 .brochure-box-row {
-	display:flex; justify-content: space-around
+	display:flex; 
+	justify-content: space-around
 }
 
 .brochure-item {
-	margin:20px; text-align:center;
+	margin:20px; 
+	text-align:center;
 }
 
 .brochure-item-img {
 	border:1px solid black;
 }
 .brochure-item-text {
-	text-decoration: none; color:rgba(0, 55, 65, 1);
+	text-decoration: none; 
+	color:rgba(0, 55, 65, 1);
 }
 
 
 .footer {
-	font-size: 28.00px;
-
 	margin: auto;
 	width: 95%;
 
@@ -171,9 +168,10 @@ flex-direction: column;
 
 	background-color: rgba(206, 217, 229, 1);
 }
-
-
-
+.footer a{
+	padding-left: 1em;
+	padding-right: 1em;
+}
 
 
 /* for advice page */
@@ -190,7 +188,8 @@ flex-direction: column;
 	background-color: #ced9e5;
 	font-size: x-large;
 	font-weight: bold;
-	width: 100%;
+	width: 95%;
+	margin-left: 2.5%;
 }
 .med_name{
 	font-weight: bold;
