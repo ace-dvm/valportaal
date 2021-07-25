@@ -60,7 +60,7 @@ body {
 	
 }
 .nav-img{
-	width:80%;
+	height: 5em;
 }
 
 .nav-icon-text {
@@ -178,7 +178,7 @@ flex-direction: column;
 
 /* for advice page */
 .body_wrap {
-	background-color: blue;
+	margin: 5%;
 }
 .section_header{
 	font-size: large;
@@ -249,6 +249,67 @@ img.warningicon{
 	max-height: 2em;
 	padding-right: 1em;
 }
+div.steps_wrapper{
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+}
+div.step{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+}
+div.dot_bar{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 10%;
+}
+div.green_dot{
+	height: 1.5em;
+}
+img.green_dot_img{
+	height: 1.5em;
+}
+div.vertical_bar{
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	height: 2.5em;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	/* This generally does the right thing, but the bar seems unwilling to fill up the available space */
+}
+div.white_bar{
+	background-color: white;
+	width: 100%;
+	height: 100%;
+}
+div.black_bar{
+	background-color: black;
+	width: 1em;
+	height: 100%;
+}
+div.step_icon{
+	width: 10%;
+}
+img.step_icon_img{
+	height: 4em;
+	margin-left: auto;
+	margin-right: auto;
+}
+div.step_title{
+	width: 20%;
+	text-align: center;
+	padding-right: 2em;
+}
+div.step_text{
+	width: 60%;
+	padding-bottom: 1em;
+}
+
 
 /* for login page */
 .login {
