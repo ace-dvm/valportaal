@@ -21,13 +21,17 @@ async function advicePageLoad() {
     let patient_json = await res.json();
     let med_advice = "Geen";
     let nonmed_advice = "Geen";
+	let other_med_advice = "";
     let risk = "De gemiddelde kans van een val in de komende jaar bij mensen boven 70 jaar is 30%.";
 	if(patient_json["patient_advice"] != undefined && Object.keys(patient_json["patient_advice"]).length > 0){
-		med_advice = createMedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
+		let json_advice = patient_json["patient_advice"][0]["json_advice"];
+		med_advice = createMedAdviceHTML(json_advice);
 		document.getElementById("med_advice").innerHTML = med_advice;
-		nonmed_advice = createNonmedAdviceHTML(patient_json["patient_advice"][0]["json_advice"]);
+		other_med_advice = createOtherMedAdviceHTML(json_advice);
+		document.getElementById("other_med_advice").innerHTML = other_med_advice;
+		nonmed_advice = createNonmedAdviceHTML(json_advice);
 		document.getElementById("nonmed_advice").innerHTML = nonmed_advice;
-		let risk_score = patient_json["patient_advice"][0]["json_advice"][0]["prediction_result"];
+		let risk_score = json_advice[0]["prediction_result"];
 		if(!(risk_score==null)){
 			risk = createRiskHTML(risk_score);
 		}
@@ -64,6 +68,16 @@ function createMedAdviceHTML(json_advice) {
         med_advice = "Geen"
     }
     return med_advice;
+}
+
+function createOtherMedAdviceHTML(json_advice) {
+    let other_med_advice = "";
+    for (let i = 0; i < json_advice.length; ++i) {
+        if (json_advice[i]["ATC_code"].match(/OTHER/)) {
+            other_med_advice = formatAdvice(json_advice[i]["advice"], json_advice[i]["freetext"]);
+        }
+    }
+    return other_med_advice;
 }
 
 function createNonmedAdviceHTML(json_advice) {
@@ -103,7 +117,6 @@ function formatAdvice(advice_text, freetext) {
 }
 
 function createRiskHTML(risk_score){
-//	let html = risk_score;
 	let html = "<div id=\"guage_bkg\" class=\"gauge_background\"><div class=\"gauge_line\" style=\"left: "
 	+ risk_score
 	+ "%\"></div><div class=\"gauge_text_left\">Laag risico</div><div class=\"gauge_text_right\">Hoog risico</div></div><!-- gauge_background -->";

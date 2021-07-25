@@ -45,9 +45,9 @@ let patient_export_data = [{
     "patient_id": 168,
     "medcat_name": null,
     "ATC_code": "OTHER",
-    "advice": null,
-    "freetext": null,
-    "prediction_result": 50
+    "advice": "Uw arts heeft nog de volgende advies voor u over uw medicatie: {{free text}}",
+    "freetext": "Please continue taking all other medications.",
+	"prediction_result": 50
 }, {
     "patient_id": 168,
     "medcat_name": "Valpreventie advies",
@@ -88,6 +88,9 @@ test('Check advice page', async t => {
     await t.expect(med_advice.withText('My comment').exists).ok();
     // TODO not sure that this test does what I want. I want to confirm that Methocarbamol does not appear > 1x.
     await t.expect(med_advice.withText(/(Methocarbamol.*){2}/).exists).notOk();
+	
+	let other_med_advice = Selector('#other_med_advice');
+	await t.expect(other_med_advice.withText('Please continue').exists).ok();
 
     let nonmed_advice = Selector('#nonmed_advice');
     await t.expect(nonmed_advice.withText('Valpreventie bij ouderen').exists).ok();
