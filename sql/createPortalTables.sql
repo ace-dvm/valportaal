@@ -1,0 +1,1 @@
+../../adfice-ace/sql/createPortalTables.sql

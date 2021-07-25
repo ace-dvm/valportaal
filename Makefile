@@ -33,22 +33,34 @@ npmsetup: node_modules/ws/lib/websocket-server.js \
 		node_modules/jest-fetch-mock/package.json
 	@echo "$@ complete"
 
-db-scripts.env: docker.db-scripts.env
+
+dbconfig.env: portal-dbconfig.env
 	ln -sv $< $@
 
-dbconfig.env: docker-dbconfig.env
+portal-dbconfig.env: docker.portal-dbconfig.env
 	ln -sv $< $@
 
-dbsetup: npmsetup dbconfig.env db-scripts.env
-	bin/setup-new-db-container.sh
-	bin/db-create-valportaal-tables.sh
+portal-db-scripts.env: docker.portal-db-scripts.env
+	ln -sv $< $@
+
+links: portal-db-scripts.env portal-dbconfig.env dbconfig.env
+
+portal-dbsetup: npmsetup portal-db-scripts.env docker.portal-db-scripts.env
+	bin/setup-new-db-container.sh docker.portal-db-scripts.env
+	bin/db-create-portal-tables.sh portal-db-scripts.env
+
+dbsetup: portal-dbsetup
 
 valportaal-static/ejs.3-1-6.js:
 	wget https://github.com/mde/ejs/releases/download/v3.1.6/ejs.js
 	mv -iv ejs.js $@
 
-check: dbsetup valportaal-static/ejs.3-1-6.js
+unit-test: npmsetup links valportaal-static/ejs.3-1-6.js
 	npm test
+
+unit: unit-test
+
+check: dbsetup valportaal-static/ejs.3-1-6.js unit-test
 	./valportaal-acceptance-test.sh
 	@echo "SUCCESS $@"
 

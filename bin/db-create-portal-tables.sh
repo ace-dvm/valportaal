@@ -1,0 +1,1 @@
+../../adfice-ace/bin/db-create-portal-tables.sh
