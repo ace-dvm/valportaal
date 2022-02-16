@@ -56,16 +56,25 @@ function createMedAdviceHTML(json_advice) {
             advice_text = advice_text.replace("<p>", "<li>");
             advice_text = advice_text.replace("</p>", "</li>");
             let med_name = json_advice[i]["medcat_name"];
+			let pharm_name = med_name.toLowerCase();
             med_name = med_name.charAt(0).toUpperCase() + med_name.slice(1);
             let med_name_div = "";
+			let pharm_link_div = "";
             if (med_name !== current_med_name) {
                 current_med_name = med_name;
-                med_name_div = "<div id=\"div_med_name_" + json_advice[i]["ATC_code"] +
-                    "\" class = \"med_name\">" +
+                med_name_div = '<div id="div_med_name_' + json_advice[i]["ATC_code"] +
+                    '" class = "med_name">' +
                     med_name +
-                    "</div>\n";
+                    '</div>\n';
+				pharm_link_div = '<div class="pharm_link">Zoek voor meer informatie over deze medicijn op <a href = "https://www.apotheek.nl/zoeken?q='
+					+ pharm_name + '&filter=medicijnen" target="_blank" rel="noopener noreferrer">'
+					+ 'apotheek.nl</a>.</div>';
             }
-            med_advice += med_name_div + advice_text;
+            med_advice += '<div class="med_head">' 
+				+ med_name_div 
+				+ pharm_link_div 
+				+ '</div>'
+				+ advice_text;
         }
     }
     if (med_advice == "") {

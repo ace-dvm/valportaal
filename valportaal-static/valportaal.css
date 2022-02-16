@@ -186,6 +186,7 @@ flex-direction: column;
 	font-weight: bold;
 	color: #75b94e;
 	margin-top: 30px;
+	margin-bottom: 10px;
 }
 .page_header{
 	background-color: #ced9e5;
@@ -196,9 +197,15 @@ flex-direction: column;
 }
 .med_name{
 	font-weight: bold;
+	font-size: large;
 	color: #f28931;
 	margin-top: 15px;
+	display: inline;
 }
+.pharm_link{
+	display: inline;
+}
+
 .category_name{
 	font-weight: bold;
 	color: #f28931	

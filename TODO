@@ -1,4 +1,3 @@
-* valportaal: links to apotheek.nl
 * enlarge button for valportaal
   * is this ctrl-shift-plus ? Then maybe do both for cross-browser:
     * document.body.style.MozTransform = 'scale(400%)'
@@ -9,6 +8,7 @@
   * https://www.plainlight.com/duckduckgo-search.html#custom-search ?
 * testing of the static/ served javascript files
 * make a "build valportaal vm" script
+* replace current test patient data with new data (to match updates in CDSS)
 
 
 * move patient_id from URL parameter to session_id in a cookie?
