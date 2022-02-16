@@ -1,4 +1,28 @@
+* change display of risk gradient to match cdss
+* valportaal: links to apotheek.nl
+* enlarge button for valportaal
+  * is this ctrl-shift-plus ? Then maybe do both for cross-browser:
+    * document.body.style.MozTransform = 'scale(400%)'
+    * document.body.style.zoom = '400%'
+    * (be sure to check footer positioning if there is a footer)
+* search button for valportaal
+  * static content only?
+  * https://www.plainlight.com/duckduckgo-search.html#custom-search ?
+* testing of the static/ served javascript files
+* make a "build valportaal vm" script
+* small textual changes and links provided in spreadsheet "valportaal broken links etc.xlsx"
+  * changes submitted by PhDs
+  Over de footer stel ik het volgende voor:
+	https://www.amc.nl/web/over-de-locatie-amc/voor-leveranciers.htm ==> niet toevoegen
+	https://www.amc.nl/web/algemene-privacyverklaring.htm è wel toevoegen?
+	https://www.amc.nl/web/toegankelijkheidsverklaring.htm è niet toevoegen
+	https://www.amc.nl/web/over-de-locatie-amc/organisatie/responsible-disclosure-white-hacking.htm ==> niet toevoegen
+	https://www.amc.nl/web/amsterdam-umc-disclaimer.htm ==> wel toevoegen
+	https://www.amc.nl/web/colofon.htm ==> niet toevoegen
+
 * move patient_id from URL parameter to session_id in a cookie?
   * url-hacking/cookie-hacking shouldn't work
-  * especially id is PII
+  * patient_id should remain an internal identifier only and should not have any external meaning
   * need a mapping of session_id to patient_id
+  
+* Consider adjusting advice.html to have browser detection. Currently the page does not work with IE11; should give a warning instead of having a non-functioning page. It should work with Firefox, Chromium, and Edge since these are the browsers that support DigiD.
