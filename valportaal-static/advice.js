@@ -120,11 +120,21 @@ function formatAdvice(advice_text, freetext) {
     return formatted_advice;
 }
 
-function createRiskHTML(risk_score) {
-    let html = "<div id=\"guage_bkg\" class=\"gauge_background\"><div class=\"gauge_line\" style=\"left: " +
-        risk_score +
-        "%\"></div><div class=\"gauge_text_left\">Laag risico</div><div class=\"gauge_text_right\">Hoog risico</div></div><!-- gauge_background -->";
-    return html;
+function createRiskHTML(risk_score){
+	let html = `<div class="gauge">
+		<div class="fallguy_div"><img class="fallguy" src="assets/ADFICE_IT_logo_noFall_small.png"></div>
+		<div class='gauge_text_left'>Laag</div>
+		<div class='gauge_text_middle'>Verhoogd</div>
+		<div class='gauge_background'>
+		<div class="gauge_line" id="gauge-line" style="left: `
+		 + risk_score + '%"'
+		+ `></div>
+		<div class='gauge_text_right'>Zeer hoog</div>
+		</div><!-- gauge_background -->
+		<div class="fallguy_div"><img class="fallguy" src="assets/ADFICE_IT_logo_Fall_small.png"></div>
+		</div><!--gauge -->`;
+
+	return html;
 }
 
 function niceDateTime(json_datetime) {
