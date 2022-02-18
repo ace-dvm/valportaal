@@ -62,13 +62,12 @@ body {
 	height: 5em;
 }
 
+
 .site_search_div{
 	position: absolute;
 	right: 43px;
 }
 
-/* the following items are taken from the duckduckgo widget generator at https://www.plainlight.com/ddg
-*/
 #sitesearch input {
 	height:30px;
 	padding:4px;
@@ -101,15 +100,14 @@ body {
 	outline:none;
 	}
 
-.searchButton {
-	style="float:right;
+.search_button {
+	float:right;
 	position:absolute;
 	top:0;
 	right:-2px;
 	z-index:3;
 }	
 	
-
 
 .zoom{
 	height: 4em;
