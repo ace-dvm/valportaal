@@ -61,6 +61,56 @@ body {
 .nav-img{
 	height: 5em;
 }
+
+.site_search_div{
+	position: absolute;
+	right: 43px;
+}
+
+/* the following items are taken from the duckduckgo widget generator at https://www.plainlight.com/ddg
+*/
+#sitesearch input {
+	height:30px;
+	padding:4px;
+	outline:none;
+	border:1px solid #8d8d8d;
+	border-right:0;
+	box-sizing:border-box;
+	border-radius:3px 0 0 3px;
+	width:calc(100% - 41px);
+	font-size:15px;
+	} 
+	
+#sitesearch button {
+	float:left;
+	cursor:pointer;
+	width:43px;
+	height:30px;
+	color:#fff;
+	background-image:linear-gradient(#cacaca,#929292);
+	border:0;
+	border-radius:0 3px 3px 0;
+	padding:0;
+	} 
+	
+#sitesearch button:active {
+	background-image:linear-gradient(#909090,#585858);
+	} 
+
+#sitesearch button:focus {
+	outline:none;
+	}
+
+.searchButton {
+	style="float:right;
+	position:absolute;
+	top:0;
+	right:-2px;
+	z-index:3;
+}	
+	
+
+
 .zoom{
 	height: 4em;
 }
@@ -127,6 +177,7 @@ h5 {
 	display: flex;
 	justify-content: space-around;
 	padding: 20px;
+	max-width: 80%;
 }
 .button {
 	max-width: 10em;

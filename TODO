@@ -1,10 +1,8 @@
-* search button for valportaal
-  * static content only?
-  * https://www.plainlight.com/duckduckgo-search.html#custom-search ?
 * testing of the static/ served javascript files
+	* Add a test for the zoom buttons. Checking for .exists in TestCafe does not seem to work.
 * make a "build valportaal vm" script
 * replace current test patient data with new data (to match updates in CDSS)
-
+* Consider adjusting advice.html to have browser detection. Currently the page does not work with IE11; should give a warning instead of having a non-functioning page. It should work with Firefox, Chromium, and Edge since these are the browsers that support DigiD.
 
 * move patient_id from URL parameter to session_id in a cookie?
   * See what is required/recommended for DigiD (only the page accessed via DigiD uses an ID)
@@ -12,6 +10,11 @@
   * patient_id should remain an internal identifier only and should not have any external meaning
   * need a mapping of session_id to patient_id
   
-* Consider adjusting advice.html to have browser detection. Currently the page does not work with IE11; should give a warning instead of having a non-functioning page. It should work with Firefox, Chromium, and Edge since these are the browsers that support DigiD.
+* Since search will only work after the site is indexed (which might take a while after installation), it would be nice to be able to only show the search box when it is working. This could be done automatically by doing an empty query (site: valportaal.thishospital.nl) and counting the number of results returned. I think this could be done using:
+https://serpapi.com/duckduckgo-search-api
+and counting the length of organic_results in the returned JSON.
+* We will need to create a sitemap file for each installation, and try to submit it to the search engines (Yandex, Bing, Google).
+see https://ahrefs.com/blog/how-to-create-a-sitemap/
+  
 
-* Add a test for the zoom buttons. Checking for .exists in TestCafe does not seem to work.
+

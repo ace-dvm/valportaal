@@ -36,3 +36,8 @@ function zoomOutPage(){
 	document.body.style['-webkit-transform'] = 'scale(1)';
 }
 
+//TODO change the URL for each hospital's installation
+function siteSearch(searchString){
+	window.open('https://duckduckgo.com?q=%22'+encodeURIComponent(searchString)+'%22+site%3Ahttps%3A%2F%2Fvalportaal.openelectronicslab.org%2F&k9=%23ff9f01');
+	return false;
+}
