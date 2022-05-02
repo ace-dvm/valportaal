@@ -70,3 +70,16 @@ tidy:
 		ValPortaalServer.js \
 		valportaal.js \
 		valportaal-static/advice.js
+		
+tar: 
+	tar cvf valportaal.tar \
+	$(shell ls *.js *.sh) \
+		Makefile.basic \
+		package.json \
+		README.md \
+		$(shell find bin sql valportaal-static -type f) \
+		$(shell find valportaal-static -type l)
+# custom for install:
+# portal-db-scripts.env
+# portal-dbconfig.env
+# dbconfig.env
