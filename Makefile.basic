@@ -19,15 +19,11 @@ SHELL=/bin/bash
 default: check
 
 check: dbsetup valportaal-static/ejs.3-1-6.js unit-test
-	./valportaal-acceptance-test.sh
 	@echo "SUCCESS $@"
 	
 dbsetup: links portal-dbsetup	
 
-links: dbconfig.env
-
-dbconfig.env: portal-dbconfig.env
-	ln -sv $< $@
+links: portal-db-scripts.env dbconfig.env
 
 portal-dbsetup: npmsetup portal-db-scripts.env
 	bin/db-create-portal-tables.sh portal-db-scripts.env
@@ -46,21 +42,6 @@ node_modules/jest-fetch-mock/package.json:
 
 update:
 	npm update
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 valportaal-static/ejs.3-1-6.js:
 	wget https://github.com/mde/ejs/releases/download/v3.1.6/ejs.js

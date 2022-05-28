@@ -73,12 +73,22 @@ tidy:
 		
 tar: 
 	tar cvf valportaal.tar \
-	$(shell ls *.js *.sh) \
+		advice.html.test.js \
+		valportaal.js \
+		ValPortaalServer.js \
 		Makefile.basic \
 		package.json \
 		README.md \
-		$(shell find bin sql valportaal-static -type f) \
-		$(shell find valportaal-static -type l)
+		$(shell find valportaal-static -type f) \
+		$(shell find valportaal-express-views -type f)
+#Will have to manually copy in:
+# adfice-db.js
+# ping-db.js
+# bin/db-create-portal-tables.sh
+# sql/createPortalTables.sql
+# sql/drop_all_tables.sql
+# since they are symlinked into this repo and tar does not like relative paths
+
 # custom for install:
 # portal-db-scripts.env
 # portal-dbconfig.env
