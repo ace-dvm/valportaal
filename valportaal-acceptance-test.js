@@ -60,10 +60,36 @@ let patient_export_data = [{
 "use strict";
 
 const fs = require('fs');
-const exporter = require('./portal-export');
+const adb = require('./adfice-db');
+
+async function export_to_portal_db(db_env_file_path, patient_id, json_advice) {
+    let sqls_and_params = [];
+
+    sqls_and_params.push([
+        "DELETE FROM patient_advice WHERE patient_id = ?",
+        [patient_id]
+    ]);
+
+    sqls_and_params.push([
+        "INSERT INTO patient_advice (patient_id, json_advice) VALUES (?,?)",
+        [patient_id, JSON.stringify(json_advice)]
+    ]);
+
+    let results = null;
+    let db = await adb.init(null, db_env_file_path);
+    try {
+        results = await db.as_sql_transaction(sqls_and_params);
+    } finally {
+        await db.close();
+    }
+
+    return results;
+}
+
+
 
 async function load_patient_168_data() {
-    await exporter.export_to_portal_db('./dbconfig.env',
+    await export_to_portal_db('./dbconfig.env',
         168, patient_export_data);
 }
 
