@@ -122,6 +122,10 @@ function formatAdvice(advice_text, freetext) {
     if (freetext == null) {
         freetext = "";
     }
+    if (!advice_text) {
+        return '<p>' + freetext + '</p>';
+    }
+
     let md = new showdown.Converter();
     let formatted_advice = md.makeHtml(advice_text);
     let regex = /(\{\{free text.*\}\})/;
