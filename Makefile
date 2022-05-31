@@ -38,7 +38,7 @@ dbconfig.env: portal-dbconfig.env
 	ln -sv $< $@
 
 portal-dbconfig.env: docker.portal-dbconfig.env
-	ln -sv $< $@
+	if [[ ! -e $@ ]]; then ln -sv $< $@; else touch $@; fi
 
 portal-db-scripts.env: docker.portal-db-scripts.env
 	ln -sv $< $@
