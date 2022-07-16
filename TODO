@@ -1,6 +1,6 @@
-* add web counter to portal
-* make "under construction" placeholder for advice.html
+* create a script to run as a cron job that makes the webcounter extract
 * add the patient folders that we have, remove links to the ones we don't.
+* replace current test patient data with new data (to match updates in CDSS) -- check if this is now done?
 * move patient_id from URL parameter to session_id in a cookie?
   * See what is required/recommended for DigiD (only the page accessed via DigiD uses an ID)
   * url-hacking/cookie-hacking shouldn't work
@@ -10,7 +10,6 @@
 * testing of the static/ served javascript files
 	* Add a test for the zoom buttons. Checking for .exists in TestCafe does not seem to work.
 * make a "build valportaal vm" script
-* replace current test patient data with new data (to match updates in CDSS)
 * Consider adjusting advice.html to have browser detection. Currently the page does not work with IE11; should give a warning instead of having a non-functioning page. It should work with Firefox, Chromium, and Edge since these are the browsers that support DigiD.
 
   

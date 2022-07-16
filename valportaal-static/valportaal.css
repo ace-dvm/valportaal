@@ -440,3 +440,19 @@ div.step_text{
 	padding:5px;
 	margin:5px
  }
+
+#under_construction{
+	width: 100%;
+}
+
+#under_c_img{
+	margin-left: 30%;
+    margin-right: 30%;
+	width: 40%;
+}
+
+#under_c_p{
+	margin-left: 20%;
+    margin-right: 20%;
+	width: 60%;
+}
