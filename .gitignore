@@ -9,6 +9,8 @@ portal-db-scripts.env
 dbconfig.env
 db-scripts.env
 
+fake-valportaal-nginx-access.deidentified.log
+
 valportaal-static/ejs.3-1-6.js
 coverage/*
 

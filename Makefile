@@ -60,7 +60,19 @@ unit-test: npmsetup links valportaal-static/ejs.3-1-6.js
 
 unit: unit-test
 
-check: dbsetup valportaal-static/ejs.3-1-6.js unit-test
+fake-valportaal-nginx-access.deidentified.log: \
+		./valportaal-log-transform.js \
+		./fake-valportaal-nginx-access.log
+	node $^ $@
+
+check-log-transform: fake-valportaal-nginx-access.deidentified.log
+	if [ ! -e $< ]; then false; fi
+	if [ "$$(grep -c '145.117.146.114' $< )" -ne 0 ]; then false; fi
+	if [ "$$(grep -c '87.233.128.195' $< )" -ne 0 ]; then false; fi
+	if [ "$$(grep -c 'advice.html' $< )" -ne 7 ]; then false; fi
+	rm fake-valportaal-nginx-access.deidentified.log
+
+check: dbsetup valportaal-static/ejs.3-1-6.js unit-test check-log-transform
 	./valportaal-acceptance-test.sh
 	@echo "SUCCESS $@"
 
@@ -69,9 +81,10 @@ tidy:
 		valportaal-acceptance-test.js \
 		ValPortaalServer.js \
 		valportaal.js \
+		valportaal-log-transform.js \
 		valportaal-static/advice.js
-		
-tar: 
+
+tar:
 	tar cvf valportaal.tar \
 		advice.html.test.js \
 		valportaal.js \
