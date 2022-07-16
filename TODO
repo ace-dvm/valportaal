@@ -1,3 +1,5 @@
+* add web counter to portal
+* make "under construction" placeholder for advice.html
 * add the patient folders that we have, remove links to the ones we don't.
 * move patient_id from URL parameter to session_id in a cookie?
   * See what is required/recommended for DigiD (only the page accessed via DigiD uses an ID)
