@@ -10,6 +10,7 @@
 	* Add a test for the zoom buttons. Checking for .exists in TestCafe does not seem to work.
 * make a "build valportaal vm" script
 * Consider adjusting advice.html to have browser detection. Currently the page does not work with IE11; should give a warning instead of having a non-functioning page. It should work with Firefox, Chromium, and Edge since these are the browsers that support DigiD.
+* Zoom function is a bit clunky; combines poorly with ctrl++ zoom. Consider improving it.
 
   
 * Since search will only work after the site is indexed (which might take a while after installation), it would be nice to be able to only show the search box when it is working. This could be done automatically by doing an empty query (site: valportaal.thishospital.nl) and counting the number of results returned. I think this could be done using:
