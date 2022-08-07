@@ -5,6 +5,16 @@ body {
 	font-size: 30px; */
 }
 
+p{
+	line-height: 1.5;
+}
+ul{
+	line-height: 1.5;
+}
+ol{
+	line-height: 1.5;
+}
+
 .nav {
 	background-color: rgba(206, 217, 229, 1);
 	color: rgba(0, 55, 65, 1);
@@ -116,9 +126,9 @@ body {
 	display: flex;
 	justify-content: space-between;
 	position:absolute;
-	float:left;
+	float:right;
 	top:20em;
-	left:0;
+	right:20%;
 }
 .text-by-zoomdiv{
 	margin-left: 0%;
@@ -148,7 +158,7 @@ body {
 .content {
 	display:flex;
 	flex-direction: column;
-	margin-left: 8%;
+	margin-left: 5%;
 }
 
 h3 {
@@ -248,7 +258,7 @@ flex-direction: column;
 /* for advice page */
 .body_wrap {
 	margin: 5%;
-	margin-left: 8%;
+	margin-left: 5%;
 }
 .section_header{
 	font-size: large;
@@ -457,7 +467,5 @@ div.step_text{
 }
 
 #under_c_p{
-	margin-left: 20%;
-    margin-right: 20%;
-	width: 60%;
+	width: 70%;
 }
