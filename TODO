@@ -8,6 +8,7 @@ and counting the length of organic_results in the returned JSON.
 * testing of the static/ served javascript files
 	* Add a test for the zoom buttons. Checking for .exists in TestCafe does not seem to work.
 * Zoom function is a bit clunky; combines poorly with ctrl++ zoom. Consider improving it.
+* The .env files still have the most-recent commit message "adfice-ace is responsible for specifying the portal db". This is not true: the portal is a separate application and specifies its own db. Check that this is consistent throughout the repo.
 
 If we decide to use personalized portal:
 * replace current test patient data with new data (to match updates in CDSS) -- check if this is now done?
