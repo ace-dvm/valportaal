@@ -10,14 +10,16 @@ if (navigator.userAgent.includes("Node.js") ||
 
 async function advicePageLoad() {
     let params = new URLSearchParams(window.location.search)
-    let id = params.get('id');
+    let code = params.get('code');
 
-    if (id == null) {
-        document.getElementById("body_wrap").innerHTML = "Klik hier om in te loggen<br><a href=\"login.html\"><button>Inloggen</button></a>";
+/*
+    if (code == null) {
+        document.getElementById("body_wrap").innerHTML = "Klik hier om in te loggen<br><a href=\"../login\"><button>Inloggen</button></a>";
         return;
     }
+*/
 
-    let res = await fetch(`../advice?id=${id}`);
+    let res = await fetch(`../advice?code=${code}`);
     let patient_json = await res.json();
     let med_advice = "Geen";
     let nonmed_advice = "Geen";

@@ -1,0 +1,3 @@
+[submodule "oauth2test"]
+	path = oauth2test
+	url = git@github.com:OpenElectronicsLab/oauth2test.git

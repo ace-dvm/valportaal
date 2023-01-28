@@ -34,6 +34,22 @@ async function getAdviceForPatient(patient_id) {
     return results;
 }
 
+async function getPatientId(uid) {
+    let sql = "SELECT patient_id FROM patient_advice WHERE bsn = ?";
+    let params = [uid];
+
+    let db = await this.db_init();
+    let results = await db.sql_query(sql, params);
+
+    if (results.length > 0) {
+        return results[0].patient_id;
+    }
+    sql = "SELECT bsn, patient_id FROM patient_advice";
+    results = await db.sql_query(sql, params);
+console.log(uid + " not found in " + JSON.stringify(results));
+    return 0;
+}
+
 function valportaal_init(db, db_config, db_env_file_path) {
     let valportaal = {
         /* private variables */
@@ -46,6 +62,7 @@ function valportaal_init(db, db_config, db_env_file_path) {
 
         /* public API methods */
         getAdviceForPatient: getAdviceForPatient,
+        getPatientId: getPatientId,
         shutdown: shutdown,
     };
     return valportaal;

@@ -26,8 +26,12 @@ node_modules/jest-fetch-mock/package.json:
 	npm install
 	@echo "$@ complete"
 
+oauth2test/oauth2.js:
+	git submodule update --init --recursive
+
 update:
 	npm update
+	git submodule update --init --recursive
 
 npmsetup: node_modules/ws/lib/websocket-server.js \
 		node_modules/jest-fetch-mock/package.json

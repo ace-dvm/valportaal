@@ -15,7 +15,7 @@ import {
 fixture `ValPortaalServer`;
 
 let patient_168 = "00000000-0000-4000-8000-100000000168";
-let fake_bsn_168 = Math.floor(Math.random() * 999999998) + 1;
+let fake_bsn_168 = "888000168"; // Math.floor(Math.random() * 999999998) + 1;
 
 // TODO: make launching of the Webserver the job of the test, and
 // TODO: have each test launch a different instance on a different port
@@ -98,10 +98,16 @@ async function load_patient_168_data() {
 test('Check advice page', async t => {
     await load_patient_168_data();
 
-    let url = `${BASE_URL}/static/advice.html?id=${patient_168}`;
+    let url = `${BASE_URL}/static/auth.html`;
     let window1 = await t.openWindow(url);
 
     let selector = Selector('body');
+
+    // expect a login button
+
+    // click the login button
+    // return BSN for 168
+    // redirect back to /static/advice.html // ?id=${patient_168}
 
     // initial check that patient data is rendered
     await t.expect(selector.withText('Methocarbamol').exists).ok();
