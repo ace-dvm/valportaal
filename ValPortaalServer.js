@@ -41,41 +41,62 @@ async function readEnvFile() {
     return envfile;
 }
 
-async function readLoginURL() {
+async function readFromEnvFile(property_name) {
     let envfile = await readEnvFile();
-    let login_url = envfile.LOGIN_URL;
-    return login_url;
+    return envfile[property_name];
+}
+
+async function readLoginURL() {
+    return readFromEnvFile("LOGIN_URL");
 }
 
 async function readClientId() {
-    let envfile = await readEnvFile();
-    return envfile.CLIENT_ID;
+    return readFromEnvFile("CLIENT_ID");
+}
+
+async function readClientSecret() {
+    return readFromEnvFile("CLIENT_SECRET");
 }
 
 async function readAuthURL() {
-    let envfile = await readEnvFile();
-    return envfile.AUTH_URL;
+    return readFromEnvFile("AUTH_URL");
 }
 
 async function readResourceURL() {
-    let envfile = await readEnvFile();
-    return envfile.RESOURCE_URL;
+    return readFromEnvFile("RESOURCE_URL");
+}
+
+async function readOauthUserId() {
+    return readFromEnvFile("OAUTH_USER_ID");
+}
+async function readOauthPassword() {
+    return readFromEnvFile("OAUTH_USER_PW");
 }
 
 async function getAdviceJSON(req, res) {
     let patient_id = 0;
     let code = req.query.code || 0;
     if (code) {
-        // client_id = readClientId();
-        let url = await readAuthURL(); // post
+        let client_id = await readClientId();
+        let client_secret = await readClientSecret();
+        let user_id = readOauthUserId();
+        let user_pw = readOauthPassword();
+        let user_auth = user_id + ':' + user_pw;
+        let user_auth_base64 = Buffer.from(user_auth).toString('base64');
+
         let body_data = {
             code: code,
-            // client_id: client_id,
+            client_id: client_id,
         };
+        let headers = {
+                Authorization: 'Basic ' + user_auth_base64
+        }
         let options = {
             method: 'POST',
             body: body_data,
+            headers: headers,
         };
+        let url = await readAuthURL(); // post
         let post_response_content = await fetch(url, options);
         let post_response_json = await post_response_content.text();
         let post_response = JSON.parse(post_response_json);
@@ -90,25 +111,21 @@ async function getAdviceJSON(req, res) {
             headers: { Authorization: token_type + ' ' + access_token, },
             body: body_data,
         };
-
         post_response_content = await fetch(url, options);
         post_response_json = await post_response_content.text();
         post_response = JSON.parse(post_response_json);
         let uid = post_response.uid;
-console.log("uid:", uid);
+
         patient_id = await vp.getPatientId(uid);
-console.log("patient_id:", patient_id);
         req.session.cookie.patient_id = patient_id;
     } else {
         patient_id = req.session.cookie.patient_id;
-console.log("cookie patient_id:", patient_id);
     }
     if (!patient_id) {
         res.redirect('/static/auth.html'); // TODO: "login failed" msg param?
         return;
     }
     let patient_advice = await vp.getAdviceForPatient(patient_id);
-console.log("patient_advice", JSON.stringify(patient_advice).substring(0,40));
     res.json({
         patient_id: patient_id,
         patient_advice: patient_advice

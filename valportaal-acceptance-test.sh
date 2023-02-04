@@ -6,7 +6,8 @@ if [ "_${PORT}_" == "__" ] || [ $PORT -lt 1024 ]; then
         PORT=$(bin/free-port)
 fi
 BASE_URL="http://127.0.0.1:$PORT"
-node ValPortaalServer.js $PORT &
+export SKIP_BOGUS_OAUTH=$(ss -ln | grep -c 9876)
+node valportaal-webserver-runner.js $PORT &
 CHILD_PID=%1
 sleep 1
 

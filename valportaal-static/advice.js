@@ -12,12 +12,10 @@ async function advicePageLoad() {
     let params = new URLSearchParams(window.location.search)
     let code = params.get('code');
 
-/*
     if (code == null) {
         document.getElementById("body_wrap").innerHTML = "Klik hier om in te loggen<br><a href=\"../login\"><button>Inloggen</button></a>";
         return;
     }
-*/
 
     let res = await fetch(`../advice?code=${code}`);
     let patient_json = await res.json();

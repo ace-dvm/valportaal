@@ -98,7 +98,7 @@ async function load_patient_1168_data() {
 test('Check advice page', async t => {
     await load_patient_1168_data();
 
-    let url = `${BASE_URL}/static/auth.html`;
+    let url = `${BASE_URL}/static/advice.html?code=bogus_code`;
     let window1 = await t.openWindow(url);
 
     let selector = Selector('body');
