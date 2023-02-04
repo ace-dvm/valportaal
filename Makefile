@@ -80,7 +80,7 @@ valportaal.env:
 	ln -sv example-valportaal.env valportaal.env
 
 check: dbsetup valportaal-static/ejs.3-1-6.js unit-test check-log-transform \
-		./valportaal.env
+		./valportaal.env oauth2test/oauth2.js
 	./valportaal-acceptance-test.sh
 	@echo "SUCCESS $@"
 
