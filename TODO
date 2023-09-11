@@ -1,3 +1,6 @@
+* There are a couple of untested lines of code in the Oauth2Test used by Valportaal. We probably need to write an acceptance test for it.
+  Try to write a test that looks like the DigiD expected flow.
+
 * We will need to create a sitemap file for each installation, and try to submit it to the search engines (Yandex, Bing, Google).
 see https://ahrefs.com/blog/how-to-create-a-sitemap/
 * Since search will only work after the site is indexed (which might take a while after installation), it would be nice to be able to only show the search box when it is working. This could be done automatically by doing an empty query (site: valportaal.thishospital.nl) and counting the number of results returned. I think this could be done using:
