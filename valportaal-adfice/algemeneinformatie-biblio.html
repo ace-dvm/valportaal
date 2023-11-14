@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<head>
+	<title>Valkliniek Patient Portal</title>
+	<link rel="stylesheet" href="valportaal.css">
+<style>
+.list {
+  column-count: 2;
+}
+</style>
+</head>
+<body>
+	<script src="staticPages.js"></script>
+	<div class="nav">
+		<div class="nav-logo">
+			<div class="nav-logo-box">
+			</div>
+			<div class="nav-title">Valportaal: Voorkom een val en blijf zelfstandig</div>
+			<!-- DDG search widget,@author Juri Wornowitski,@version 3.0,@link https://www.plainlight.com/ddg -->
+			<div id="sitesearch" class="site_search_div">
+			<noscript><em>Zoekfunctie heeft Javascript nodig.</noscript>
+			<form style="position:relative" onsubmit="this.elements[0].click();">
+			<div class="search_button"><button type="submit" onclick="siteSearch(this.parentElement.parentElement.elements[1].value)">&#128269;</button></div>
+			<input type="text" name="q" placeholder="zoek op deze website." /></form>
+			</div>
+			<!-- This widget depends on the site being indexed by DuckDuckGo, 
+				which means it needs to be indexed by Yandex, Bing, or Google. 
+				This is only really possible once the site is in place at its host URL, and will need to be repeated for every installation.-->					
+		</div>
+		<div class="nav-button-box">
+			<a href="index.html">
+				<div class="nav-button">
+					<img class="nav-img" src="assets/homeicon.png">
+					<div class="nav-icon-text">Startpagina</div>
+				</div>
+			</a>
+			<a href="voorbereiding.html">
+				<div class="nav-button">
+					<img class="nav-img" src="assets/medfile.png">
+					<div class="nav-icon-text">Voorbereiding<br/>op uw bezoek</div>
+				</div>
+			</a>
+			<a href="advice.html">
+				<div class="nav-button">
+					<img class="nav-img" src="assets/falladviceicon.png">
+					<div class="nav-icon-text">Mijn valrisico en advies</div>
+				</div>
+			</a>
+			<a href="algemeneinformatie.html">
+				<div class="nav-button">
+					<img class="nav-img" src="assets/infoicon-red.png">
+					<div class="nav-icon-text text-red">Een val voorkomen:<br/>Algemene informatie</div>
+				</div>
+			</a>
+			<a href="overhetonderzoek.html">
+				<div class="nav-button">
+					<img class="nav-img" src="assets/research.png">
+					<div class="nav-icon-text">Over dit project</div>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div id="generalLibrary_header" class="page_header">Bibliotheek</div>	
+	<div class="content">
+
+		<div>
+			<h3>Bibliotheek (A-Z)</h3>
+				<div class = "zoom_container">
+					<div id="zoom_div" class="zoom_div">
+					</div>
+				</div>
+				<div class="text-by-zoomdiv"><p>De bibliotheek bevat algemene adviezen die voor oudere patiënten interessant kunnen zijn.<br/>
+					Als u op een link klikt, kunt u worden doorverwezen naar een externe website. <br/>
+					Die website opent zich dan op een nieuwe pagina. <br/>
+					<br/>
+					Nadat u op de valpoli bent geweest, krijg u van de dokter een advies op maat. <br/>
+					Die vindt u dan terug op <a href="advice.html" target="_blank">deze pagina</a>.<br/>
+					<br/>
+					Klik op het onderwerp van uw keuze om hier meer over te lezen:<br/>
+					</p>
+				</div>
+		</div>
+
+<div class="list">
+		<ul class="bluedot">
+				<li><span class ="nocolor"><a href="#Algemeenfysiotherapeut">Algemeen fysiotherapeut</a></span></li>
+				<li><span class="nocolor"><a href="#Bekkenfysiotherapeut">Bekkenfysiotherapeut</a></span></li>
+				<li><span class="nocolor"><a href="#Beweging">Beweging</a></span></li>
+				<li><span class="nocolor"><a href="#Casemanager">Casemanager</a></span></li>
+				<li><span class="nocolor"><a href="#Delier">Delier</a></span></li>
+				<li><span class="nocolor"><a href="#Dementie">Dementie</a></span></li>
+				<li><span class="nocolor"><a href="#Depressie">Depressie</a></span></li>
+				<li><span class="nocolor"><a href="#Duizeligheid">Duizeligheid</a></span></li>
+				<li><span class="nocolor"><a href="#Echovanhethart">Echo van het hart</a></span></li>
+				<li><span class="nocolor"><a href="#Ergotherapeut">Ergotherapeut</a></span></li>
+				<li><span class="nocolor"><a href="#Fysiotherapeut">Fysiotherapeut</a></span></li>
+				<li><span class="nocolor"><a href="#Geriatriefysiotherapeut">Geriatriefysiotherapeut</a></span></li>
+				<li><span class="nocolor"><a href="#Hartfilmpje/Elektrocardiogram (ECG)">Hartfilmpje/Elektrocardiogram (ECG)</a></span></li>
+				<li><span class="nocolor"><a href="#Incontinentie">Incontinentie</a></span></li>
+				<li><span class="nocolor"><a href="#Loophulpmiddelen">Loophulpmiddelen</a></span></li>
+				<li><span class="nocolor"><a href="#mantelzorgers">Meer informatie voor mantelzorgers</a></span></li>
+				<li><span class="nocolor"><a href="#Oefentherapeut">Oefentherapeut</a></span></li>
+				<li><span class="nocolor"><a href="#Orthostatischehypotensie">Orthostatische hypotensie</a></span></li>
+				<li><span class="nocolor"><a href="#Osteoporose">Osteoporose</a></span></li>
+				<li><span class="nocolor"><a href="#Palliatievezorg">Palliatieve zorg</a></span></li>
+				<li><span class="nocolor"><a href="#Syncopeflauwvallen">Syncope/flauwvallen</a></span></li>
+				<li><span class="nocolor"><a href="#Valpreventie">Valpreventie</a></span></li>
+				<li><span class="nocolor"><a href="#Valtraining">Valtraining</a></span></li>
+				<li><span class="nocolor"><a href="#Veiligschoeisel">Veilig schoeisel</a></span></li>
+		</ul>
+</div>
+
+		<div>
+			<h5 id="Algemeenfysiotherapeut">Algemeen fysiotherapeut</h5>
+			<p>
+			Een algemeen fysiotherapeut kan helpen met de meeste aandoeningen en klachten. <br/>
+			Deze fysiotherapeut heeft geen verdere specialisatie. <br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="Bekkenfysiotherapeut">Bekkenfysiotherapeut</h5>
+			<p>
+			De bekkenfysiotherapeut helpt bij klachten in het gebied van het bekken, de lage rug, buik en bekkenbodem.<br/>
+			Zoals pijn in de onderbuik, de bekkenbodem of lage rug.<br/>
+			Ook kan de bekkenfysiotherapeut helpen bij klachten zoals incontinentie. <br/>
+			Zie ook: <a href="#Fysiotherapeut">Fysiotherapeut</a> en <a href="#Incontinentie">Incontinentie</a><br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="Beweging">Beweging</h5>
+			<p>
+			Lichaamsbeweging helpt niet alleen om het risico op vallen te verminderen, maar ook de algehele gezondheid. <br/>
+			Hoe fitter, hoe meer plezier van het leven.<br/>
+			</p>
+			Wilt u meer weten? Bekijk de onderstaande folder:<br/>
+			<div>
+			<a href="assets/brochures/VeiligheidNL_HupInDeBenen_nov2020.pdf" target="_blank">
+						<div class="brochure-item">
+							<img src="assets/brochures/VeiligheidNL_HupInDeBenen.png" class="brochure-item-img">
+							<div class="brochure-item-text">
+								Hup, in de benen</a><br/>
+							</div>
+						</div>
+			</div>
+		</div>
+
+		<div>
+			<h5 id="Casemanager">Casemanager</h5>
+			<p>
+			Een casemanager dementie is een onafhankelijke hulpverlener die u helpt als u dementie heeft. <br/>
+			De casemanager begeleidt, informeert en adviseert dan u en uw mantelzorger. <br/>
+			Op <a href="https://www.dementie.nl/zoeken?pijler=alle&zoekterm=casemanagement&boost=1" target="_blank">dementie.nl</a> vindt u meer informatie over casemanagers.<br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="Delier">Delier</h5>
+			<p>
+			Een delier is verwardheid die binnen enkele uren tot dagen ontstaat. <br/>
+			Op <a href="https://www.thuisarts.nl/delier" target="_blank">thuisarts.nl</a> vindt u informatie over delier.<br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="Dementie">Dementie</h5>
+			<p>
+			Bij dementie wordt het moeilijk om dingen te onthouden, de weg te weten, dingen te doen, te praten <br/>
+			en anderen te begrijpen.<br/>
+			Er zijn meerdere vormen van dementie, zoals de ziekte van Alzheimer, vasculaire dementie, <br/>
+			frontotemporale dementie, dementie bij de ziekte van Parkinson en Lewy-Body dementie. <br/>
+			Kijk op <a href="https://dementie.nl" target="_blank">dementie.nl</a> voor meer informatie over deze vormen van dementie.<br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="Depressie">Depressie</h5>
+			<p>
+			Bij een depressie bent u langer dan 2 weken somber en/of heeft u nergens zin in.<br/>
+			Op <a href="https://www.thuisarts.nl/depressie" target="_blank">thuisarts.nl</a> vindt u informatie over depressies.<br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="Duizeligheid">Duizeligheid</h5>
+			<p>
+			Duizeligheid kan tot een val leiden en kan verschillende oorzaken hebben. <br/>
+			Op <a href="https://www.thuisarts.nl/benigne-paroxismale-positieduizeligheid-bppd/ik-heb-last-van-benigne-paroxismale-positieduizeligheid" target="_blank">thuisarts.nl</a> vindt u uitleg over duizeligheid bij ouderen en over Benigne Paroxismale Positieduizeligheid (BPPD). <br/>
+			U kunt oefeningen doen om de <a href="https://www.thuisarts.nl/duizeligheid/ik-ben-oudere-en-duizelig" target="_blank">duizeligheidsklachten</a> te verminderen. <br/>
+			Deze oefeningen noemen wij de <a href="https://www.thuisarts.nl/positieduizeligheid/ik-wil-epley-beweging-doen" target="_blank">Epley-manoeuvre.</a> <br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="Echovanhethart">Echo van het hart</h5>
+			<p>
+			Een echo van het hart gebruikt geluidsgolven om een filmpje van het hart te maken.<br/>
+			Op <a href="https://www.hartwijzer.nl/echo-van-het-hart" target="_blank">hartwijzer.nl</a> wordt uitgelegd hoe een echo van het hart gemaakt wordt.<br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="Ergotherapeut">Ergotherapeut</h5>
+			<p>
+			De ergotherapeut helpt mensen om zoveel mogelijk zelfstandig te zijn en te blijven. <br/>
+			De nadruk ligt op dagelijkse activiteiten. <br/>
+			Bijvoorbeeld: wassen, aankleden, traplopen, een maaltijd klaarmaken of het huishouden doen. <br/>
+			<a href="https://ergotherapie.nl/zoek-een-ergotherapeut/" target="_blank">Vindt een ergotherapeut bij u in de buurt.</a> <br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="Fysiotherapeut">Fysiotherapeut</h5>
+			<p>
+			Een fysiotherapeut helpt u met een goede houding en beweging. <br/>
+			Meestal kunt u naar een fysiotherapeut zonder verwijzing van de dokter. <br/>
+			Voor de meest klachten kunt u vaak bij een algemeen fysiotherapeut terecht. <br/>
+			Soms is het beter om naar een gespecialiseerde fysiotherapeut te gaan. <br/>
+
+			Op deze pagina vindt u informatie over de volgende fysiotherapeuten:<br/>
+			<a href="#Algemeenfysiotherapeut">Algemeen fysiotherapeut</a>
+			<a href="#Geriatriefysiotherapeut">Geriatriefysiotherapeut</a><br/>
+			<a href="#Bekkenfysiotherapeut">Bekkenfysiotherapeut</a><br/>
+			<br/>
+			<br/>
+
+
+			Wilt u meer weten?<br/>
+			Lees meer over <a href="https://defysiotherapeut.com/gespecialiseerde-fysiotherapie/" target="_blank">verschillende soorten fysiotherapeuten</a>. <br/>
+			
+			
+			Of vindt een <a href="https://defysiotherapeut.com/zoek-fysiotherapeut/" target="_blank">fysiotherapeut bij u in de buurt</a>.<br/>
+			Op deze websites vindt u nog meer informatie over fysiotherapie:<br/>
+			<a href="https://nvfg.kngf.nl/" target="_blank">Nederlandse Vereniging voor Fysiotherapie in de Geriatrie</a><br/>
+			<a href="https://defysiotherapeut.com" target="_blank">De fysiotherapeut</a><br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="Geriatriefysiotherapeut">Geriatriefysiotherapeut</h5>
+			<p>
+			De geriatriefysiotherapeut helpt mensen die ouderdomsklachten hebben of minder mobiel zijn. <br/>
+			De geriatriefysiotherapeut helpt ook mensen die klachten hebben die door een ziekte of aandoening komen. <br/>
+			Bijvoorbeeld: een beroerte, dementie, de ziekte Parkinson of een gebroken heup.<br/>
+			Zie ook: <a href="#Fysiotherapeut">Fysiotherapeut</a><br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="Hartfilmpje/Elektrocardiogram (ECG)">Hartfilmpje/Elektrocardiogram (ECG)</h5>
+			Een hartfilmpje registreert de elektrische prikkel die de spiercellen in het hart laat samentrekken.<br/>
+			Een ECG geeft veel informatie over hartziekten.<br/>
+			Op <a href="https://www.hartwijzer.nl/ecg" target="_blank">hartwijzer.nl</a> wordt uitgelegd hoe een hartfilmpje (ECG) gemaakt wordt.<br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="Incontinentie">Incontinentie</h5>
+			<p>
+			Bij urineverlies kunt u uw plas niet goed ophouden. <br/>
+			Op <a href="https://www.thuisarts.nl/urine-incontinentie/ik-heb-urineverlies-urine-incontinentie-bij-vrouwen" target="_blank">thuisarts.nl</a> vindt u informatie over urine-incontinentie. <br/>
+			Zie ook: <a href="#Bekkenfysiotherapeut">Bekkenfysiotherapeut</a><br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="Loophulpmiddelen">Loophulpmiddelen</h5>
+			<p>
+			Vraag uw fysiotherapeut naar welk loophulpmiddel voor u geschikt is en hoe u deze gebruikt.<br/>
+			Als u niet meer goed ter been bent, of zich onzeker voelt bij het lopen, kunt u gebruik maken van hulpmiddelen. <br/>
+			Voorbeelden van loophulpmiddelen zijn: een looprek, kruk, wandelstok, rollator of rolstoel. <br/>
+			Ook het dragen van veilig schoeisel hoort hierbij. <br/>
+			Deze kunt u aanschaffen via de thuiszorgwinkel. <br/>
+			Een fysiotherapeut kan met u meekijken welk loophulpmiddel het meest geschikt voor u is. <br/>
+			Risicoactiviteiten, zoals op een stoel gaan staan om iets hoog uit een kast te nemen, kunt u beter vermijden. <br/>
+			Voor informatie over vergoedingen van deze hulpmiddelen kunt u terecht bij uw zorgverzekering.<br/>
+			Op <a href="https://www.hulpmiddelenwijzer.nl/" target="_blank">hulpmiddelenwijzer.nl</a> vindt u meer informatie over loophulpmiddelen.<br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="mantelzorgers">Meer informatie voor mantelzorgers</h5>
+			<p>
+			In 2016 gaven in Nederland circa 4,4 miljoen mensen mantelzorg. <br/>
+			Mantelzorg is alle hulp aan een hulpbehoevende door iemand uit diens directe sociale omgeving. <br/>
+			Op <a href="https://mantelzorg.nl" target="_blank">mantelzorg.nl</a> vindt u meer informatie over bijvoorbeeld geldzaken, vervangende zorg en steun en advies.<br/>
+			Zorgt u voor iemand met dementie? Kijk dan op <a href="https://www.thuisarts.nl/dementie/ik-zorg-voor-iemand-die-dementie-heeft" target="_blank">thuisarts.nl</a> en <a href="https://dementie.nl" target="_blank">dementie.nl.</a> <br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="Oefentherapeut">Oefentherapeut</h5>
+			<p>
+			Een oefentherapeut helpt bij klachten die kunnen ontstaan door een verkeerde houding. <br/>
+			Ook helpt de oefentherapeut bij klachten door verkeerde bewegingen tijdens dagelijkse activiteiten.<br/>
+			De oefentherapeut helpt u om goede bewegingen en houdingen aan te leren. <br/>
+			De oefentherapeut kan advies geven over . <br/>
+			Voorbeelden van loophulpmiddelen zijn: een looprek, kruk, wandelstok, rollator of rolstoel. <br/>
+			Ook het dragen van veilig schoeisel hoort hierbij. <br/>
+			Oefentherapie heet ook wel oefentherapie Mensendieck of oefentherapie Cesar.<br/>
+			<a href="https://oefentherapie.nl/" target="_blank">Vindt een oefentherapeut bij u in de buurt.</a> <br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="Orthostatischehypotensie">Orthostatische hypotensie</h5>
+			<p>
+			Orthostatische hypotensie betekent letterlijk: lage bloeddruk bij het staan. <br/>
+			Initiële orthostatische hypotensie betekent: lage bloeddruk bij gaan staan die maar kort duurt en weer over gaat. <br/>
+			Hierdoor kunt u korte tijd last hebben van duizeligheid. <br/>
+			U kunt zelfs een korte tijd het bewustzijn kwijtraken. <br/>
+			Als u overeind komt van een liggende naar staande houding, verplaatst het bloed zich naar de buik en de benen. <br/>
+			Dit komt door de invloed van de zwaartekracht. <br/>
+			Hierdoor krijgt het hart minder bloed toegevoerd. <br/>
+			En de hoeveelheid bloed die het hart per minuut in de slagaders pompt neemt af. <br/>
+			Het gevolg is dat de bloeddruk daalt<br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="Osteoporose">Osteoporose</h5>
+			<p>
+			In de volksmond noemen we osteoporose botontkalking. <br/>
+			Door botontkalking kunnen botten sneller breken.<br/>
+			Botontkalking komt vaker bij vrouwen voor dan bij mannen.<br/>
+			Op <a href="https://www.thuisarts.nl/botbreuken-en-botontkalking/ik-heb-botontkalking" target="_blank">thuisarts.nl</a> vindt u meer informatie over osteoporose.<br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="Palliatievezorg">Palliatieve zorg</h5>
+			<p>
+			Palliatieve zorg is niet gericht op genezen, maar op kwaliteit van leven. <br/>
+			Deze zorg vindt bijvoorbeeld plaats wanneer iemand ongeneeslijk ziek is. <br/>
+			Palliatieve zorg zorgt ervoor dat iemand de dingen kunt doen die hij/zij belangrijk vindt, in de tijd die er nog is.<br/>
+			Op <a href="https://www.thuisarts.nl/levenseinde" target="_blank">thuisarts.nl</a> vindt u meer informatie over palliatieve zorg en het levenseinde.<br/> <br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="Syncopeflauwvallen">Syncope/flauwvallen</h5>
+			<p>
+			Als u flauwvalt, krijgen de hersenen even minder bloed. <br/>
+			Hierdoor raakt u even bewusteloos. <br/>
+			Dat duurt hooguit een paar minuten. <br/>
+			Op <a href="https://www.thuisarts.nl/flauwvallen" target="_blank">thuisarts.nl</a> vindt u meer informatie over flauwvallen/syncope.<br/> <br/>
+			</p>
+		</div>
+
+		<div>
+			<h5 id="Valpreventie">Valpreventie</h5>
+			<p>
+			Het voorkomen van een val noemen we valpreventie. <br/>
+			Voorbeelden van valpreventie zijn: zorgen voor voldoende beweging en het gebruik van veilig schoeisel. <br/>
+			</p>
+			Wilt u meer weten? Bekijk dan de onderstaande folder:<br/>
+			<a href="assets/brochures/checklist_Zo_blijft_u_overeind.pdf" target="_blank">
+						<div class="brochure-item">
+							<img src="assets/brochures/zo_blijft_u_overeind.png" class="brochure-item-img">
+							<div class="brochure-item-text">
+								Checklist Blijf overeind, voorkom vallen</a><br/>
+							</div>
+						</div>
+		</div>
+
+		<div>
+			<h5 id="Valtraining">Valtraining</h5>
+			<p>
+			Bij een valtraining doet u oefeningen om een val te helpen voorkomen. <br/>
+			Zo is er bijvoorbeeld <a href="https://www.veiligheid.nl/valpreventie/interventies/beweegprogrammas/in-balans" target="_blank">de valtraining 'In Balans'.</a> <br/>
+			De training is gericht op het bewust worden van risicofactoren en het verbeteren van balans, mobiliteit en de conditie. <br/>
+			Dit leidt tot een toename van zelfvertrouwen.<br/>
+			Vindt <a href="https://www.google.nl/maps/d/viewer?mid=1-Lj1qB1F2hFfelFpRTzfGXWQsY7YPluM&ll=52.138745376167776%2C4.981859300000012&z=7" target="_blank">een fysiotherapeut bij u in de buurt</a> die de 'In Balans' valtraining aanbiedt.<br/> 
+			Ook is er de <a href="https://www.veiligheid.nl/valpreventie/interventies/beweegprogrammas/otago" target="_blank">valtraining "Otago"</a>.<br/> 
+
+			Deze training richt zich op het verbeteren van de spierkracht en het evenwicht.<br/>
+			Vindt <a href="https://www.google.nl/maps/d/viewer?mid=1-Lj1qB1F2hFfelFpRTzfGXWQsY7YPluM" target="_blank">een fysiotherapeut bij u in de buurt</a> die de “Otago” valtraining aanbiedt<br/>
+			<br/>
+			</p>
+			<a href="assets/brochures/VeiligheidNL_Otago.pdf" target="_blank">
+						<div class="brochure-item">
+							<img src="assets/brochures/VeiligheidNL_Otago.PNG" class="brochure-item-img">
+							<div class="brochure-item-text">
+								Otago oefenprogramma</a><br/>
+							</div>
+						</div>
+			
+		</div>
+
+		<div>
+			<h5 id="Veiligschoeisel">Veilig schoeisel</h5>
+			<p>
+			Veilig schoeisel zorgt ervoor dat u stabiel staat en kan voorkomen dat u valt of struikelt. <br/>
+			Dat is eigenlijk voor iedereen aan te raden. <br/>
+			Onveilig schoeisel met bijvoorbeeld gladde zolen of hoge hakken verhogen het valrisico verder. <br/>
+			Veilig schoeisel heeft een goed profiel op de zool, een lage hak (max. 1 cm), <br/>
+			is hoog sluitend (net onder de enkel) en heeft een goed, voorgevormd voetbed of een inlay die voetbed goed steunt. <br/>
+			Loop (bij uit bed komen bijvoorbeeld) nooit op sokken maar gebruik altijd pantoffels die voldoen aan eerder genoemde eisen. <br/>
+			Zie ook: <a href="#Oefentherapeut">Oefentherapeut</a><br/>
+			</p>
+		</div>
+
+	</div>
+	<div class="footer">
+		<a href="privacy.html" target="_blank">Privacyverklaring<a> | <a href="https://www.amc.nl/web/amsterdam-umc-disclaimer.htm" target="_blank">Disclaimer</a>
+	</div>
+</body>
+</html>

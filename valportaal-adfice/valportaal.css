@@ -1,0 +1,471 @@
+body {
+	font-family: Arial, sans-serif;
+	transform-origin: left top;
+	/* font-family: 'Trebuchet MS', Arial; 
+	font-size: 30px; */
+}
+
+p{
+	line-height: 1.5;
+}
+ul{
+	line-height: 1.5;
+}
+ol{
+	line-height: 1.5;
+}
+
+.nav {
+	background-color: rgba(206, 217, 229, 1);
+	color: rgba(0, 55, 65, 1);
+	margin: auto;
+	margin-bottom: 1em;
+	width: 95%;
+	padding-top: 10px;
+	display: block;
+}
+
+.nav-logo {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.nav-logo-box {
+	background: url("assets/umc-logo.png") center no-repeat;
+	background-size: 12em;
+    width: 12em;
+	height:	2em;
+	background-color: rgba(255, 255, 255, 1);
+	border-color: rgba(112, 112, 112, 1);
+	border-style: none;
+	border-width: 1.00px;
+	border-radius: 71.00px;
+	z-index: 1;
+}
+
+.nav-title {
+	color: rgba(240, 120, 20, 1);
+	font-size: large;
+	font-style: italic;
+	padding-top: 10px;
+	z-index: 1;
+}
+
+.nav-button-box {
+	display: flex;
+	justify-content: space-around;
+	background-color: white;
+	width: 100%;
+	margin-bottom: 1em;
+}
+
+.nav-button {
+	width:80%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 1em;
+	
+}
+.nav-img{
+	height: 5em;
+}
+
+
+.site_search_div{
+	position: absolute;
+	right: 43px;
+}
+
+#sitesearch input {
+	height:30px;
+	padding:4px;
+	outline:none;
+	border:1px solid #8d8d8d;
+	border-right:0;
+	box-sizing:border-box;
+	border-radius:3px 0 0 3px;
+	width:calc(100% - 41px);
+	font-size:15px;
+	} 
+	
+#sitesearch button {
+	float:left;
+	cursor:pointer;
+	width:43px;
+	height:30px;
+	color:#fff;
+	background-image:linear-gradient(#cacaca,#929292);
+	border:0;
+	border-radius:0 3px 3px 0;
+	padding:0;
+	} 
+	
+#sitesearch button:active {
+	background-image:linear-gradient(#909090,#585858);
+	} 
+
+#sitesearch button:focus {
+	outline:none;
+	}
+
+.search_button {
+	float:right;
+	position:absolute;
+	top:0;
+	right:-2px;
+	z-index:3;
+}	
+	
+
+.zoom{
+	height: 4em;
+}
+.zoom_container{
+	display: flex;
+	justify-content: space-between;
+	position:absolute;
+	float:right;
+	top:20em;
+	right:20%;
+}
+.text-by-zoomdiv{
+	margin-left: 0%;
+}
+.zoom_div{
+	display: block;
+	max-width: 10%;
+	margin-right: 10%;
+}
+
+.nav-icon-text {
+	padding-top: 0.5em;
+	white-space: nowrap;
+}
+
+.text-red {
+	color: red;
+}
+
+.bluedot{
+	color: blue;
+}
+.nocolor{
+	color: auto;
+}
+
+.content {
+	display:flex;
+	flex-direction: column;
+	margin-left: 5%;
+}
+
+h3 {
+	color: rgba(240, 120, 20, 1);
+}
+h4 {
+	/* text-decoration: bold; */
+}
+h5 {
+	color: rgba(240, 120, 20, 1);
+	margin-top: 3em;
+	margin-bottom: 1em;
+}
+
+.sideeffects {
+	display: flex;
+	padding: 30px;
+
+}
+
+.sideeffects-list {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.button-box {
+	display: flex;
+	justify-content: space-around;
+	padding: 20px;
+	max-width: 80%;
+}
+.button {
+	max-width: 10em;
+	border-radius: 2em;
+	border-style: none;
+	filter: drop-shadow(0px 6px 8px rgba(0, 0, 0, 1));
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: rgba(0, 55, 65, 1);
+	text-decoration: none;
+}
+.button-text{
+	padding-top: 1em;
+	padding-bottom: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.brochure-box {
+display:flex; 
+flex-direction: column;
+}
+
+.brochure-box-row {
+	display:flex; 
+	justify-content: space-around
+}
+
+.brochure-item {
+	margin:20px; 
+	text-align:center;
+}
+
+.brochure-item-img {
+	border:1px solid black;
+	max-width:460px;
+}
+.brochure-item-text {
+	text-decoration: none; 
+	color:rgba(0, 55, 65, 1);
+}
+
+
+.footer {
+	margin: auto;
+	width: 95%;
+
+	display: flex;
+	justify-content: center;
+	padding: 30px;
+	margin-top: 30px;
+	
+	border-top: 1px solid rgba(112, 112, 112, 1);
+
+	background-color: rgba(206, 217, 229, 1);
+}
+.footer a{
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+
+/* for advice page */
+.body_wrap {
+	margin: 5%;
+	margin-left: 5%;
+}
+.section_header{
+	font-size: large;
+	font-weight: bold;
+	color: #75b94e;
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+.page_header{
+	background-color: #ced9e5;
+	font-size: x-large;
+	font-weight: bold;
+	width: 95%;
+	margin-left: 2.5%;
+}
+.med_name{
+	font-weight: bold;
+	font-size: large;
+	color: #f28931;
+	margin-top: 15px;
+	display: inline;
+}
+.pharm_link{
+	display: inline;
+}
+
+.category_name{
+	font-weight: bold;
+	color: #f28931	
+}
+.patient_nonmed_category{
+	display: none;
+}
+
+
+div.gauge_background {
+    width:60%;
+    height: 0px;
+    padding-bottom: 4%;
+    /* The bar will transition from green (very low risk; 0-15%) to yellow (medium risk; 15-30%) to orange (elevated risk; 30-50%) to red (high risk; 50-60%) to deep red (very high risk; ≥60%).*/
+    background: linear-gradient(to right, #0F0 5%, #FF0 15%, #F70 35%, #F00 55%, #800 65%);
+    display: inline-block;
+	border: 2px solid #000000;
+    margin-bottom: 3ex;
+}
+
+div.gauge_line {
+    width: calc(0.4% + 1px);
+    margin-left: calc(-(0.4% / 2 + 0.5px));
+    margin-right: calc(-(0.4% / 2 + 0.5px));
+    padding-bottom: calc(8% + 1ex);
+    padding-left: 0;
+    padding-right: 0;
+    background: #000;
+    position: relative;
+    top: -0.7ex;
+    display: inline-block;
+}
+
+div.gauge_text_left {
+    position: relative;
+    top: 10px;
+    margin: 0px;
+    padding: 0px;
+    width: 0px;
+    display: inline-block;
+}
+
+/* Text labels: ‘laag’ close to the left side of the bar, ‘verhoogd’ at about 25%, and zeer hoog at around 50% */
+div.gauge_text_middle {
+    position: relative;
+    top: 10px;
+    margin: 0px;
+    padding: 0px;
+    width: 0px;
+    left: calc(25% - 4ch - 1em);
+    display: inline-block;
+}
+
+div.gauge_text_right {
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    width: 10ch;
+    top: 10px;
+    left: calc(100% - 9ch);
+    display: inline-block;
+}
+
+div.fallguy_div{
+	position: relative;
+	display: inline-block;
+	margin: 0px;
+    padding: 0px;
+	height: 40px;
+}
+
+img.fallguy{
+	max-height: 100%;
+	margin-bottom: 0.5em;
+}
+
+
+div.warning{
+	background-color: #ffef16;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-left: 30px;
+	max-width: 80%;
+	min-height: 2em;
+	display: flex;
+	align-items: center;
+}
+div.warning_icon_wrapper{
+	height: 100%;
+}
+img.warningicon{
+	max-height: 2em;
+	padding-right: 1em;
+}
+div.steps_wrapper{
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+}
+div.step{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 100%;
+}
+div.dot_bar{
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 10%;
+}
+div.green_dot{
+	height: 1.5em;
+}
+img.green_dot_img{
+	height: 1.5em;
+}
+div.vertical_bar{
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	height: 2.5em;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	/* This generally does the right thing, but the bar seems unwilling to fill up the available space */
+}
+div.white_bar{
+	background-color: white;
+	width: 100%;
+	height: 100%;
+}
+div.black_bar{
+	background-color: black;
+	width: 1em;
+	height: 100%;
+}
+div.step_icon{
+	width: 10%;
+}
+img.step_icon_img{
+	height: 4em;
+	margin-left: auto;
+	margin-right: auto;
+}
+div.step_title{
+	width: 20%;
+	text-align: center;
+	padding-right: 2em;
+}
+div.step_text{
+	width: 60%;
+	padding-bottom: 1em;
+}
+
+
+/* for login page */
+.login {
+	height:110px;
+	width:200px;
+	margin:auto;
+	border:1px rgb(112, 112, 112) solid;
+	margin-top: 40px;
+	padding:10px;
+	background-color: rgba(206, 217, 229, 1);
+}
+.login input {
+	padding:5px;
+	margin:5px
+ }
+
+#under_construction{
+	width: 100%;
+}
+
+#under_c_img{
+	margin-left: 30%;
+    margin-right: 30%;
+	width: 40%;
+}
+
+#under_c_p{
+	width: 70%;
+}

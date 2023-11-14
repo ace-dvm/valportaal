@@ -159,6 +159,7 @@ app.set('views', ['./valportaal-express-views', ]);
 const server = http.createServer(app);
 
 app.use("/static", express.static('valportaal-static'));
+app.use("/adfice_it", express.static('valportaal-adfice'));
 app.set('view engine', 'ejs');
 
 app.get("/", renderIndex);

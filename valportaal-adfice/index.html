@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<head>
+	<title>Valkliniek Patient Portal</title>
+	<link rel="stylesheet" href="valportaal.css">
+</head>
+<body>
+	<script src="staticPages.js"></script>
+	<div class="nav">
+		<div class="nav-logo">
+			<div class="nav-logo-box">
+			</div>
+			<div class="nav-title">Valportaal: Voorkom een val en blijf zelfstandig</div>
+			<!-- DDG search widget,@author Juri Wornowitski,@version 3.0,@link https://www.plainlight.com/ddg -->
+			<div id="sitesearch" class="site_search_div">
+			<noscript><em>Zoekfunctie heeft Javascript nodig.</noscript>
+			<form style="position:relative" onsubmit="this.elements[0].click();">
+			<div class="search_button"><button type="submit" onclick="siteSearch(this.parentElement.parentElement.elements[1].value)">&#128269;</button></div>
+			<input type="text" name="q" placeholder="zoek op deze website." /></form>
+			</div>
+			<!-- This widget depends on the site being indexed by DuckDuckGo, 
+				which means it needs to be indexed by Yandex, Bing, or Google. 
+				This is only really possible once the site is in place at its host URL, and will need to be repeated for every installation.-->			
+		</div>
+	   <div class="nav-button-box">
+		<a href="index.html">
+		<div class="nav-button">
+			<img class="nav-img" src="assets/homeicon-red.png">
+			<div class="nav-icon-text text-red">Startpagina</div>
+		</div>
+		</a>
+		<a href="voorbereiding.html">
+		<div class="nav-button">
+			<img class="nav-img" src="assets/medfile.png">
+			<div class="nav-icon-text">Voorbereiding<br/>op uw bezoek</div>
+		</div>
+		</a>
+		<a href="advice.html">
+		<div class="nav-button">
+			<img class="nav-img" src="assets/falladviceicon.png">
+			<div class="nav-icon-text">Mijn valrisico en advies</div>
+		</div>
+		</a>
+		<a href="algemeneinformatie.html">
+		<div class="nav-button">
+			<img class="nav-img" src="assets/infoicon.png">
+			<div class="nav-icon-text">Een val voorkomen:<br/>Algemene informatie</div>
+		</div>
+		</a>
+		<a href="overhetonderzoek.html">
+		<div class="nav-button">
+			<img class="nav-img" src="assets/research.png">
+			<div class="nav-icon-text">Over dit project</div>
+		</div>
+		</a>
+	    </div>
+	</div>
+	<div id="start_header" class="page_header">Startpagina</div>	
+	<div class="content">
+	<div class = "zoom_container">
+		<div id="zoom_div" class="zoom_div">
+	</div>
+		</div>
+		<h3>Welkom op het Valportaal!</h3>
+		<div class="text-by-zoomdiv"><p>Dit Valportaal is speciaal voor patiënten van de valpoli (valpolikliniek).<br/>
+			We proberen uw bezoek aan onze valpoli prettiger en gemakkelijker te maken.<br/>
+			Op dit Valportaal vindt u bijv. informatie over vallen en het voorkomen ervan.<br/>
+			Na afloop van uw bezoek krijgt u advies op maat hoe u vallen kunt voorkomen.<br/>
+			Hierdoor weet u beter wat u ook zelf kunt doen om uw kans op een val te verkleinen.<br/>
+			Zo houdt u de touwtjes in handen en kunnen we samen op zoek naar oplossingen die écht werken.</p>
+		</div>
+
+
+		<h4>U vindt op deze pagina de volgende informatie:</h4>
+		<ul class="bluedot">
+		<!-- <li><span class="nocolor"><a href="#hoegebruikik">Hoe gebruik ik dit Valportaal?</a> -->
+		<li><span class="nocolor"><a href="#waaromvoorkomen">Waarom willen we vallen onder ouderen voorkomen?</a>
+		<li><span class="nocolor"><a href="#medicijnen">Waarom kunnen medicijnen het valrisico beïnvloeden?</a>
+		</ul>
+
+		<!-- <h3 id="hoegebruikik">Hoe gebruik ik dit Valportaal?</h3>
+
+		Klik op het filmpje hieronder om te ontdekken hoe dit Valportaal werkt:<br/>
+		<br/>
+		<div><img src="assets/videothumb.png" style="width:411px;height:232px"></div><br/>
+		<br/>
+		-->
+
+		<h3 id="waaromvoorkomen">Waarom willen we vallen onder ouderen voorkomen?</h3>
+		<p>Iedereen vindt het fijn om zo lang mogelijk zelfstandig en onafhankelijk te blijven en eigen regie te houden.<br/>
+		Eén van de beste manieren om hiervoor te zorgen is, voorkomen dat u valt.<br/>
+		Vallen is namelijk de meest voorkomende oorzaak van letsel bij ouderen.<br/>
+		Steeds meer ouderen bezoeken de Spoedeisende hulp (SEH) omdat ze gevallen zijn.<br/>
+		Het is dus heel belangrijk om de kans op een val onder ouderen te verkleinen.<br/>
+		De kans op een val noemen we het ‘valrisico’.<br/>
+		Het voorkomen van een val noemen we ‘valpreventie’.<br/>
+		Voorbeelden van valpreventie zijn: zorgen voor voldoende dagelijkse beweging, het dragen van veilig schoeisel en
+		veilig medicijngebruik.<br/>
+		</p>
+
+
+		<h3 id="medicijnen">Waarom kunnen medicijnen het valrisico beïnvloeden?</h3>
+		<p>
+		Een belangrijke maatregel om vallen te voorkomen heeft alles te maken met medicijngebruik.<br/>
+		Dankzij onderzoek weten we namelijk dat sommige medicijnen bijwerkingen kunnen veroorzaken.<br/> 
+		Ook combinaties van medicijnen kunnen bijwerkingen veroorzaken.<br/> 
+		Die bijwerkingen kunnen tot een val leiden.<br/> 
+		Voorbeelden van zulke bijwerkingen zijn klachten zoals duizeligheid, een lage bloeddruk bij opstaan en slaperigheid.<br/>
+		</p>
+
+		<div class="sideeffects">
+			<img src="assets/list-sideeffects.png">
+			<ul class="sideeffects-list">
+					<li> Iemand slikt (een combinatie van) medicijnen.</li>
+					<li>Deze medicijnen kunnen bijwerkingen geven.<br/>
+					    Bijvoorbeeld: duizeligheid en slaperigheid.</li>
+					<li>De bijwerkingen kunnen tot een val leiden.</li>
+			</ul>
+		</div>
+		<p>
+		Soms kan het aanpassen van medicijngebruik zorgen voor een lager valrisico.<br/> 
+		Bespreek dit uiteraard altijd eerst samen met de behandelende dokter.<br/> 
+		Let op, pas uw medicijnen dus niet zelf aan.<br/> 
+		De behandelende dokter kijkt goed naar de medicijnen en past deze aan, als dat mogelijk is.<br/> 
+		Door goed met uw dokter te praten en uw medicijngebruik aan te passen, kan een val hopelijk voorkomen worden.<br/> 
+		<br/>
+		</p>
+	</div>
+	<div class="footer">
+		<a href="privacy.html" target="_blank">Privacyverklaring<a> | <a href="https://www.amc.nl/web/amsterdam-umc-disclaimer.htm" target="_blank">Disclaimer</a> 
+	</div>
+</body>
+</html>
